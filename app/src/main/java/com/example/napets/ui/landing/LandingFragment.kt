@@ -1,4 +1,4 @@
-package com.example.napets.ui.main
+package com.example.napets.ui.landing
 
 import com.example.napets.core.base.BaseFragment
 import com.example.napets.databinding.FragmentLandingBinding
