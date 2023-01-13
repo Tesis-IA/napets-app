@@ -4,7 +4,9 @@ import android.os.Bundle
 import com.example.napets.R
 import com.example.napets.core.base.BaseActivity
 import com.example.napets.databinding.ActivityMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : BaseActivity<ActivityMainBinding>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
