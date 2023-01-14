@@ -24,5 +24,12 @@
 hs_err_pid*
 
 # gradle
-/.gradle
+.gradle/
 
+
+# Android Studio generated files and folders
+captures/
+.externalNativeBuild/
+.cxx/
+*.apk
+output.json
