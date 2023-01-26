@@ -1,4 +1,4 @@
-package com.example.napets.core.base
+package com.example.napets.ui.base
 
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.*

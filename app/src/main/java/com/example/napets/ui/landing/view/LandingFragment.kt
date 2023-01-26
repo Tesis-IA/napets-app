@@ -1,6 +1,6 @@
 package com.example.napets.ui.landing.view
 
-import com.example.napets.core.base.BaseFragment
+import com.example.napets.ui.base.BaseFragment
 import com.example.napets.databinding.FragmentLandingBinding
 import dagger.hilt.android.AndroidEntryPoint
 

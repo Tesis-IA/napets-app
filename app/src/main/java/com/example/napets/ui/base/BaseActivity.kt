@@ -1,4 +1,4 @@
-package com.example.napets.core.base
+package com.example.napets.ui.base
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

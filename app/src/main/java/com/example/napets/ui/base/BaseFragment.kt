@@ -1,4 +1,4 @@
-package com.example.napets.core.base
+package com.example.napets.ui.base
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,7 +9,7 @@ import androidx.viewbinding.ViewBinding
 
 abstract class BaseFragment<B: ViewBinding> : Fragment() {
 
-    protected lateinit var binding: B
+    lateinit var binding: B
     protected abstract fun getViewBinding(): B
 
     override fun onCreate(savedInstanceState: Bundle?) {
