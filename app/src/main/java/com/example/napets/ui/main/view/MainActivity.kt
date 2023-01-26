@@ -11,6 +11,11 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        setupBottomNavigation()
+    }
+
+    private fun setupBottomNavigation() {
+        TODO("Not yet implemented")
     }
 
     override fun getViewBinding() = ActivityMainBinding.inflate(layoutInflater)
