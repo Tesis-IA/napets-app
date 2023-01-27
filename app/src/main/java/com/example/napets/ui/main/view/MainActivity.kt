@@ -1,5 +1,6 @@
 package com.example.napets.ui.main.view
 
+import android.opengl.Visibility
 import android.os.Bundle
 import androidx.lifecycle.LiveData
 import androidx.navigation.NavController
@@ -37,6 +38,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
         setupBottomNavigation()
+    }
+
+    fun isBottomNavVisible(visibility: Int){
+        binding.mainBottomNavigation.visibility = visibility
     }
 
     override fun onSupportNavigateUp(): Boolean {
