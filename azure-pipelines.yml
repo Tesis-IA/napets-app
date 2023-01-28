@@ -2,7 +2,7 @@ trigger:
   - master
 
 pool:
-  vmImage: SANSEPI0L
+  default: SANSEPI0L
 
 container: gradle:jdk16
 
