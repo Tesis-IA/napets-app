@@ -1,5 +1,6 @@
 package com.example.napets.core.di
 
+import com.example.napets.BuildConfig
 import com.example.napets.core.ApiService
 import dagger.Module
 import dagger.Provides
@@ -21,7 +22,7 @@ object NetworkModule {
     @Provides
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("")
+            .baseUrl(BuildConfig.BASE_URL)
             .client(okHttpClient)
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .addConverterFactory(GsonConverterFactory.create())

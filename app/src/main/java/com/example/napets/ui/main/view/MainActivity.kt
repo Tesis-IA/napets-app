@@ -2,23 +2,28 @@ package com.example.napets.ui.main.view
 
 import android.opengl.Visibility
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.lifecycle.LiveData
 import androidx.navigation.NavController
 import com.example.napets.R
 import com.example.napets.data.extension.setupWithNavController
 import com.example.napets.ui.base.BaseActivity
 import com.example.napets.databinding.ActivityMainBinding
+import com.example.napets.ui.main.viewmodel.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : BaseActivity<ActivityMainBinding>() {
+
+    private val viewModel: MainViewModel by viewModels()
+
     private var currentNavController: LiveData<NavController>? = null
     private val navGraphIds = listOf(
         R.navigation.nav_graph_home
     )
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        viewModel.getUsers()
         if(savedInstanceState == null) setupBottomNavigation()
     }
 
