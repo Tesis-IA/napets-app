@@ -4,20 +4,31 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/java
 
 trigger:
-- main
+  - master
 
 pool:
   vmImage: ubuntu-latest
 
 steps:
-- task: Gradle@2
-  inputs:
-    workingDirectory: '$(system.defaultWorkingDirectory)/napets-app'
-    gradleWrapperFile: '$(system.defaultWorkingDirectory)/napets-app/gradlew'
-    gradleOptions: '-Xmx3072m'
-    javaHomeOption: 'JDKVersion'
-    jdkVersionOption: '1.8'
-    jdkArchitectureOption: 'x64'
-    publishJUnitResults: true
-    testResultsFiles: '**/TEST-*.xml'
-    tasks: 'build'
+  - task: Gradle@3
+    inputs:
+      gradleWrapperFile: 'gradlew'
+      tasks: 'build test'
+      publishJUnitResults: true
+      testResultsFiles: '**/TEST-*.xml'
+      javaHomeOption: 'JDKVersion'
+      jdkVersionOption: '1.11'
+      sonarQubeRunAnalysis: false
+      spotBugsAnalysis: false
+
+  - task: JavaToolInstaller@0
+    inputs:
+      versionSpec: '16'
+      jdkArchitectureOption: x64
+      jdkSourceOption: 'AzureStorage'
+      azureResourceManagerEndpoint: Azure Resource Manager
+      azureStorageAccountName: your_azure_blob_storage_name
+      azureContainerName: jdks
+      azureCommonVirtualFile: 'openjdk.zip'
+      jdkDestinationDirectory: '$(agent.toolsDirectory)/jdk16'
+      cleanDestinationDirectory: true
