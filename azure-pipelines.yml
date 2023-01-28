@@ -1,13 +1,10 @@
-# Gradle
-# Build your Java project and run tests with Gradle using a Gradle wrapper script.
-# Add steps that analyze code, save build artifacts, deploy, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/java
-
 trigger:
   - master
 
 pool:
-  vmImage: ubuntu-latest
+  default: SANSEPI0L
+
+container: gradle:jdk16
 
 steps:
   - task: Gradle@3
@@ -16,19 +13,17 @@ steps:
       tasks: 'build test'
       publishJUnitResults: true
       testResultsFiles: '**/TEST-*.xml'
-      javaHomeOption: 'JDKVersion'
-      jdkVersionOption: '1.11'
+      javaHomeOption: 'path'
+      jdkDirectory: 'path_to_jdk16'
       sonarQubeRunAnalysis: false
       spotBugsAnalysis: false
 
-  - task: JavaToolInstaller@0
+  - task: Maven@3
     inputs:
-      versionSpec: '16'
-      jdkArchitectureOption: x64
-      jdkSourceOption: 'AzureStorage'
-      azureResourceManagerEndpoint: Azure Resource Manager
-      azureStorageAccountName: your_azure_blob_storage_name
-      azureContainerName: jdks
-      azureCommonVirtualFile: 'openjdk.zip'
-      jdkDestinationDirectory: '$(agent.toolsDirectory)/jdk16'
-      cleanDestinationDirectory: true
+      mavenPomFile: 'pom.xml'
+      javaHomeOption: 'JDKVersion'
+      jdkVersionOption: '1.17'
+      jdkArchitectureOption: 'x64'
+      publishJUnitResults: true
+      testResultsFiles: '**/TEST-*.xml'
+      goals: 'package'
