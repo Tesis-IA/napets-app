@@ -14,6 +14,8 @@ class MainViewModel @Inject constructor(
     private val authenticationRepository: IAuthenticationRepository
 ) : BaseViewModel() {
 
+
+
     fun getUsers(){
         viewModelScope.launch(Dispatchers.IO){
             authenticationRepository.getUsers()
