@@ -1,3 +1,8 @@
 package com.example.napets.data.domainmodel
 
-data class UserResponse(val token: String)
+import com.example.napets.data.model.UserData
+
+data class UserResponse(
+    val accessToken: String,
+    val user: UserData
+)

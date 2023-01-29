@@ -11,5 +11,6 @@
     <color name="warning">#FFC400</color>
     <color name="text_headline">#3F6953</color>
     <color name="text_color_hint">#87E675</color>
+    <color name="bg_loading">#80000000</color>
 
 </resources>

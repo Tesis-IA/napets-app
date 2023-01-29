@@ -19,6 +19,18 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setListeners()
+        setObservers()
     }
+
+    private fun setObservers() {
+        TODO("Not yet implemented")
+    }
+
+    private fun setListeners() {
+        TODO("Not yet implemented")
+    }
+
+
 
 }
