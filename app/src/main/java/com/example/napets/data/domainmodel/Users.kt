@@ -1,4 +1,4 @@
-package com.example.napets.data.model
+package com.example.napets.data.domainmodel
 
 data class Users(
     val username: String,
