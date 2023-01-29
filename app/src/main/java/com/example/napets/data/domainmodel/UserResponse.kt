@@ -1,3 +1,3 @@
-package com.example.napets.data.model
+package com.example.napets.data.domainmodel
 
 data class UserResponse(val token: String)

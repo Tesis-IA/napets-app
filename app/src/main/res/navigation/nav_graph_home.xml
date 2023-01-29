@@ -5,9 +5,16 @@
     android:id="@+id/nav_graph_home"
     app:startDestination="@id/landingFragment">
 
+    <include app:graph="@navigation/nav_graph_login"/>
+
     <fragment
         android:id="@+id/landingFragment"
         android:name="com.example.napets.ui.landing.view.LandingFragment"
         android:label="fragment_landing"
-        tools:layout="@layout/fragment_landing" />
+        tools:layout="@layout/fragment_landing" >
+        <action
+            android:id="@+id/action_landingFragment_to_nav_graph_login"
+            app:destination="@id/nav_graph_login" />
+    </fragment>
+
 </navigation>

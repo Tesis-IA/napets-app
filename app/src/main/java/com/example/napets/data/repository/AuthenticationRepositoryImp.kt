@@ -2,8 +2,7 @@ package com.example.napets.data.repository
 
 import android.util.Log
 import com.example.napets.core.ApiService
-import com.example.napets.data.model.AllUsersResponse
-import com.example.napets.data.model.UserResponse
+import com.example.napets.data.domainmodel.UserResponse
 import javax.inject.Inject
 
 class AuthenticationRepositoryImp @Inject constructor(

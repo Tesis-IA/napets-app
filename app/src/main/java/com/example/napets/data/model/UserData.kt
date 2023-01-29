@@ -1,6 +1,7 @@
-package com.example.napets.data.domainmodel
+package com.example.napets.data.model
 
-data class Users(
+data class UserData(
+    val id: String,
     val username: String,
     val name: String,
     val lastname: String,

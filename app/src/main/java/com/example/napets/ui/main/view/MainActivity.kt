@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.lifecycle.LiveData
 import androidx.navigation.NavController
+import androidx.navigation.findNavController
 import com.example.napets.R
 import com.example.napets.data.extension.setupWithNavController
 import com.example.napets.ui.base.BaseActivity
@@ -17,14 +18,20 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     private val viewModel: MainViewModel by viewModels()
 
-    private var currentNavController: LiveData<NavController>? = null
+    private var currentNavController: NavController? = null
     private val navGraphIds = listOf(
-        R.navigation.nav_graph_home
+        R.navigation.nav_graph_home,
+        R.navigation.nav_graph_login
     )
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewModel.getUsers()
         if(savedInstanceState == null) setupBottomNavigation()
+        setObservers()
+    }
+
+    private fun setObservers() {
+        navigateToLogin()
     }
 
     private fun setupBottomNavigation() {
@@ -35,7 +42,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             intent = intent
         )
 
-        currentNavController = controller
+        currentNavController = controller.value
     }
 
     override fun getViewBinding() = ActivityMainBinding.inflate(layoutInflater)
@@ -45,11 +52,15 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         setupBottomNavigation()
     }
 
+    fun navigateToLogin(){
+        currentNavController?.navigate(R.id.action_landingFragment_to_nav_graph_login)
+    }
+
     fun isBottomNavVisible(visibility: Int){
         binding.mainBottomNavigation.visibility = visibility
     }
 
     override fun onSupportNavigateUp(): Boolean {
-        return currentNavController?.value?.navigateUp() ?: false
+        return currentNavController?.navigateUp() ?: false
     }
 }
