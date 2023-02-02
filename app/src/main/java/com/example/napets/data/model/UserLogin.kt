@@ -1,3 +1,3 @@
 package com.example.napets.data.model
 
-data class UserLogin(val email: String, val password: String)
+data class UserLogin(val username: String, val password: String)

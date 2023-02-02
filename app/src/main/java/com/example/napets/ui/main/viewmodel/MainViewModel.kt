@@ -17,7 +17,7 @@ class MainViewModel @Inject constructor(
 
 
     fun getUsers(){
-        viewModelScope.launch(Dispatchers.IO){
+        runBlockingCoroutine(Dispatchers.IO){
             authenticationRepository.getUsers()
         }
     }

@@ -1,6 +1,9 @@
 package com.example.napets.ui.base
 
 import android.view.View
+import android.view.View.*
+import androidx.databinding.BindingAdapter
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.*
@@ -9,8 +12,7 @@ import kotlin.coroutines.CoroutineContext
 
 abstract class BaseViewModel : ViewModel() {
 
-    open var showLoading = View.GONE
-
+    open var showLoading = false
     fun runBlockingCoroutine(
         coroutineContext: CoroutineContext,
         runBLocking: suspend () -> Unit
@@ -18,7 +20,7 @@ abstract class BaseViewModel : ViewModel() {
         CoroutineScope(coroutineContext).launch {
             try {
                 runBLocking.invoke()
-                showLoading = View.VISIBLE
+                showLoading = true
             }catch (e: Exception){
                 e.message?.let { error(it) }
             }

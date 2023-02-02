@@ -14,7 +14,7 @@ class AuthenticationRepositoryImp @Inject constructor(
     override suspend fun userLogin(email: String, password: String): NetworkResponse<UserResponse, ErrorResponse> {
         return apiService.login(
             UserLogin(
-                email = email,
+                username = email,
                 password = password
             )
         )

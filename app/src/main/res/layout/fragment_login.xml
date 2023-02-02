@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
     <data>
-        <import type="com.example.napets.ui.login.viewmodel.LoginViewModel"/>
         <variable
             name="viewModel"
-            type="LoginViewModel" />
+            type="com.example.napets.ui.login.viewmodel.LoginViewModel" />
 
     </data>
 
@@ -85,7 +84,7 @@
                     android:layout_marginTop="40dp"
                     app:boxBackgroundMode="outline">
 
-                    <EditText
+                    <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/login_text_password"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -178,7 +177,7 @@
 
         <include
             layout="@layout/layout_loading_full_screen"
-            android:visibility="@{viewModel.showLoading}"
+            app:isVisible="@{viewModel.showLoading}"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
