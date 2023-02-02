@@ -13,11 +13,11 @@ import kotlin.coroutines.CoroutineContext
 abstract class BaseViewModel : ViewModel() {
 
     open var showLoading = false
-    fun runBlockingCoroutine(
+    suspend fun runBlockingCoroutine(
         coroutineContext: CoroutineContext,
         runBLocking: suspend () -> Unit
     ) {
-        CoroutineScope(coroutineContext).launch {
+        withContext(coroutineContext) {
             try {
                 runBLocking.invoke()
                 showLoading = true
