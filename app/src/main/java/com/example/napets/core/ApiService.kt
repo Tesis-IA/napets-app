@@ -24,5 +24,5 @@ interface ApiService {
     ) : Response<UserResponse>
 
     @GET("users")
-    suspend fun getUsers(): Response<UsersResponse>
+    suspend fun getUsers(): NetworkResponse<UsersResponse, ErrorResponse>
 }

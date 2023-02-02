@@ -1,3 +1,10 @@
 package com.example.napets.data.domainmodel
 
-data class ErrorResponse(val message: String? = null)
+import android.os.Parcelable
+import com.google.gson.annotations.JsonAdapter
+import com.squareup.moshi.JsonClass
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
+@JsonClass(generateAdapter = true)
+data class ErrorResponse(val message: String? = null): Parcelable

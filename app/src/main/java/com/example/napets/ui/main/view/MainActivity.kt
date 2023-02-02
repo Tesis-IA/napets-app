@@ -25,7 +25,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     )
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel.getUsers()
         if(savedInstanceState == null) setupBottomNavigation()
         setObservers()
     }

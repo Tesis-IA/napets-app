@@ -31,6 +31,5 @@ class AuthenticationRepositoryImp @Inject constructor(
 
     override suspend fun getUsers() {
         val users = apiService.getUsers()
-        Log.i("allUsers", users.body().toString())
     }
 }
