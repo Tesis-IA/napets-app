@@ -27,7 +27,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
 
     private fun setObservers() {
         viewModel.isAuthenticated.observe(viewLifecycleOwner){
-            Log.i("userResponse", it.toString())
+            // TODO: If it's true will should be navigate the next screen
         }
         viewModel.errorResponse.observe(viewLifecycleOwner){
             Snackbar.make(binding.root, it.toString(), Snackbar.LENGTH_LONG).show()
