@@ -26,7 +26,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
     }
 
     private fun setObservers() {
-        viewModel.userData.observe(viewLifecycleOwner){
+        viewModel.isAuthenticated.observe(viewLifecycleOwner){
             Log.i("userResponse", it.toString())
         }
         viewModel.errorResponse.observe(viewLifecycleOwner){

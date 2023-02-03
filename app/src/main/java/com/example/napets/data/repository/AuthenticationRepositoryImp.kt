@@ -6,12 +6,13 @@ import com.example.napets.data.domainmodel.ErrorResponse
 import com.example.napets.data.domainmodel.UserResponse
 import com.example.napets.data.model.UserLogin
 import com.haroldadmin.cnradapter.NetworkResponse
+import retrofit2.Response
 import javax.inject.Inject
 
 class AuthenticationRepositoryImp @Inject constructor(
     private val apiService: ApiService
 ) : IAuthenticationRepository{
-    override suspend fun userLogin(email: String, password: String): NetworkResponse<UserResponse, ErrorResponse> {
+    override suspend fun userLogin(email: String, password: String): Response<UserResponse> {
         return apiService.login(
             UserLogin(
                 username = email,

@@ -12,8 +12,7 @@ abstract class BaseViewModel : ViewModel() {
     fun runBlockingCoroutine(
         coroutineContext: CoroutineContext,
         runBLocking: suspend () -> Unit
-    ) {
-        CoroutineScope(coroutineContext).launch {
+    ) { CoroutineScope(coroutineContext).launch {
             try {
                 runBLocking.invoke()
                 showLoading = true

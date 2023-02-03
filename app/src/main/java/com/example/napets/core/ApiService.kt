@@ -16,7 +16,7 @@ interface ApiService {
     @POST("login")
     suspend fun login(
         @Body userLogin: UserLogin
-    ): NetworkResponse<UserResponse, ErrorResponse>
+    ): Response<UserResponse>
 
     @POST("createUser")
     suspend fun createAccount(

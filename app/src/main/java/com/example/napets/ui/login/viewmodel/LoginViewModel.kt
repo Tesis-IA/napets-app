@@ -1,38 +1,41 @@
 package com.example.napets.ui.login.viewmodel
 
-import android.view.View
 import androidx.lifecycle.MutableLiveData
 import com.example.napets.data.domainmodel.UserResponse
-import com.example.napets.data.repository.AuthenticationRepositoryImp
 import com.example.napets.data.repository.IAuthenticationRepository
 import com.example.napets.ui.base.BaseViewModel
-import com.haroldadmin.cnradapter.NetworkResponse
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class LoginViewModel @Inject constructor(
     private val authenticationRepository: IAuthenticationRepository
-): BaseViewModel() {
+) : BaseViewModel() {
 
-    private val _userData = MutableLiveData<UserResponse?>()
-    val userData get() = _userData
+    private val _isAuthenticated = MutableLiveData(false)
+    val isAuthenticated get() = _isAuthenticated
 
     private val _errorResponse = MutableLiveData<String>()
     val errorResponse get() = _errorResponse
 
-    fun login(email: String, password: String){
+    fun login(email: String, password: String) {
         runBlockingCoroutine(Dispatchers.IO){
-            when(val response = authenticationRepository.userLogin(email, password)){
-                is NetworkResponse.Success -> {
-                    _userData.postValue(response.body)
+            val result = authenticationRepository.userLogin(
+                email = email,
+                password = password
+            )
+            val canGetUser = when{
+                result.isSuccessful && result.body()?.accessToken?.isNotEmpty() == true ->{
+                    true
                 }
-                is NetworkResponse.NetworkError -> {
-                    _errorResponse.postValue(response.error.message)
+                else ->{
+                    _errorResponse.postValue(result.message())
+                    false
                 }
-                else -> { /* no-op*/ }
             }
+            _isAuthenticated.postValue(canGetUser)
         }
         showLoading = false
     }
