@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.navigation.NavOptions
+import androidx.navigation.fragment.findNavController
 import com.example.napets.databinding.FragmentLoginBinding
 import com.example.napets.ui.base.BaseFragment
 import com.example.napets.ui.login.viewmodel.LoginViewModel
@@ -40,6 +42,10 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
                 binding.loginTextEmail.text.toString(),
                 binding.loginTextPassword.text.toString()
             )
+        }
+
+        binding.loginButtonToRegister.setOnClickListener {
+            findNavController().navigate()
         }
     }
 
