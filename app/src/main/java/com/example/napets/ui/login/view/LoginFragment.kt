@@ -45,7 +45,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
         }
 
         binding.loginButtonToRegister.setOnClickListener {
-            findNavController().navigate()
+            findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToSignUpFragment())
         }
     }
 
