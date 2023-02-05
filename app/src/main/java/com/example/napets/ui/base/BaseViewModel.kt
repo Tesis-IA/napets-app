@@ -12,11 +12,12 @@ abstract class BaseViewModel : ViewModel() {
     fun runBlockingCoroutine(
         coroutineContext: CoroutineContext,
         runBLocking: suspend () -> Unit
-    ) { CoroutineScope(coroutineContext).launch {
+    ): Job {
+        return CoroutineScope(coroutineContext).launch {
             try {
                 runBLocking.invoke()
                 showLoading = true
-            }catch (e: Exception){
+            } catch (e: Exception) {
                 e.message?.let { error(it) }
             }
         }
