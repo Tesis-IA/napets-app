@@ -9,4 +9,7 @@ class SigInViewModel @Inject constructor(
 
 ): BaseViewModel() {
 
+    fun registerUSer(username: String, email: String, password: String){
+
+    }
 }
