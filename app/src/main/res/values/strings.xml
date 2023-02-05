@@ -17,6 +17,7 @@
     <string name="ingresar">Ingresar</string>
     <string name="no_tienes_cuenta">¿No tienes cuenta?</string>
     <string name="registrarse">Registrarse</string>
+
     <!-- Sign In Fragment -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="reg_strate">Regístrate</string>
@@ -26,4 +27,10 @@
     <string name="al_iniciar_sesi_n_aceptas_nuestro_equipo_de_uso_y_pol_tica_de_privacidad">Al iniciar sesión, aceptas nuestro equipo de uso Y política de privacidad</string>
     <string name="ya_tienes_una_cuenta">¿Ya tienes una cuenta?</string>
     <string name="inciiar_sesi_n">Iniciar sesión</string>
+
+    <!-- Home Fragment-->
+    <string name="buscar_en_napets">Buscar en NaPets</string>
+    <string name="plagas_y_enfermedades">Plagas y \n Enfermedades</string>
+    <string name="mis_cultivos">Mis cultivos</string>
+    <string name="consejos_de_cultivos">Consejos de \n cultivos</string>
 </resources>

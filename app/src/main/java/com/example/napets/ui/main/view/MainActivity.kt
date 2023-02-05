@@ -52,7 +52,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     }
 
     fun navigateToLogin(){
-        currentNavController?.navigate(R.id.action_landingFragment_to_nav_graph_login)
+        currentNavController?.navigate(R.id.action_homeFragment_to_nav_graph_login)
     }
 
     fun isBottomNavVisible(visibility: Int){
