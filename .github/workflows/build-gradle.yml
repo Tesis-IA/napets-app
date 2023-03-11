@@ -7,12 +7,14 @@ on:
       - "bugfix/*"
       - "fix/*"
       - "config/*"
+      - "main"
   pull_request:
     branches:
       - "feature/*"
       - "bugfix/*"
       - "fix/*"
       - "config/*"
+      - "main"
 
 jobs:
   build:
