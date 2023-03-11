@@ -1,5 +1,4 @@
 name: Android Testing
-
 on: [push]
 
 jobs:
@@ -18,5 +17,5 @@ jobs:
         run: ./gradlew testDebugUnitTest
 
       - name: Android Test Report
-        uses: asadnansr/android-test-report-action@v1.2.0
+        uses: asadmansr/android-test-report-action@v1.2.0
         if: ${{ always() }}
