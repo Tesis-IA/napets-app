@@ -48,6 +48,9 @@ jobs:
         uses: asadmansr/android-test-report-action@v1.2.0
         if: ${{ always() }}
 
+      - name: Path
+        run: ${{ github.workspace }}
+
       - name: Generate AAR and APK files
         if: always()
         run: ./gradlew assembleDebug
@@ -60,5 +63,6 @@ jobs:
           path: |
             app/build/outputs/apk/debug/app-debug.apk
             dog_network/build/outputs/aar
+          if-no-files-found: error
 
     
