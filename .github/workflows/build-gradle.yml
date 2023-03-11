@@ -1,4 +1,4 @@
-name: Android CI
+name: Build and Test CI
 
 on:
   push:
@@ -31,7 +31,15 @@ jobs:
 
       - name: Setup Gradle
         uses: gradle/gradle-build-action@v2
+
       - name: Build app
         run: ./gradlew assemble
+
+      - name: Unit Test
+        run: ./gradlew testDebugUnitTest
+
+      - name: Android Test Report
+        uses: asadmansr/android-test-report-action@v1.2.0
+        if: ${{ always() }}
 
     
