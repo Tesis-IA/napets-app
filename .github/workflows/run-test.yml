@@ -1,6 +1,20 @@
 name: Android Testing
-on: [push]
-
+on:
+  push:
+    branches:
+      - "feature/*"
+      - "bugfix/*"
+      - "fix/*"
+      - "config/*"
+      - "main"
+  pull_request:
+    branches:
+      - "feature/*"
+      - "bugfix/*"
+      - "fix/*"
+      - "config/*"
+      - "main"
+      
 jobs:
   test:
     runs-on: ubuntu-latest
