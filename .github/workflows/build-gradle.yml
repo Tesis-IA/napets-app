@@ -59,7 +59,7 @@ jobs:
         with:
           name: artifacts.zip
           path: |
-            app/build/outputs/apk/debug/app-debug.apk
+            app/build/**/outputs/**/*.apk
             napets-app/build/outputs/aar
           if-no-files-found: error
 
