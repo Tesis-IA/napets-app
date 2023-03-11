@@ -47,6 +47,10 @@ jobs:
   build_artifact:
     runs-on: ubuntu-latest
 
+    permissions:
+      contents: read
+      packages: write
+
     steps:
       - name: Setup actions
         uses: actions/checkout@v3
