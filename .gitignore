@@ -13,8 +13,6 @@
 # Package Files #
 *.jar
 !gradle/wrapper/gradle-wrapper.jar
-!gradle/wrapper/gradle-wrapper.properties
-!gradlew
 *.war
 *.nar
 *.ear
