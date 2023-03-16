@@ -100,7 +100,7 @@ dependencies {
     implementation("com.squareup.okhttp3:logging-interceptor")
 
     //Lottie
-    implementation 'com.airbnb.android:lottie:5.2.0'
+    implementation 'com.airbnb.android:lottie:6.0.0'
 
     //Network Response
     implementation "com.github.haroldadmin:NetworkResponseAdapter:5.0.0"
