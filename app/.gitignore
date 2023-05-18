@@ -25,4 +25,3 @@ hs_err_pid*
 # gradle
 ../.gradle/
 build/
-!build/generated/source/buildConfig/debug/com/example/napets/BuildConfig.java

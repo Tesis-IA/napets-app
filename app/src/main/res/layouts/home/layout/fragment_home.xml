@@ -5,7 +5,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.napets.ui.home.viewmodel.HomeViewModel" />
+            type="com.quantumcode.napets.ui.home.viewmodel.HomeViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

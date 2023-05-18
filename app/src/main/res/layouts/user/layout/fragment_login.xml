@@ -3,7 +3,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.napets.ui.login.viewmodel.LoginViewModel" />
+            type="com.quantumcode.napets.ui.login.viewmodel.LoginViewModel" />
 
     </data>
 
