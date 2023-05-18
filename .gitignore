@@ -33,4 +33,3 @@ captures/
 .cxx/
 *.apk
 output.json
-!app/build/generated/source/buildConfig/debug/com/example/napets/BuildConfig.java

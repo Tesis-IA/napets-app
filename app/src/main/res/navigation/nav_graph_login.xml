@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/loginFragment"
         tools:layout="@layout/fragment_login"
-        android:name="com.example.napets.ui.login.view.LoginFragment"
+        android:name="com.quantumcode.napets.ui.login.view.LoginFragment"
         android:label="LoginFragment" >
         <action
             android:id="@+id/action_loginFragment_to_signUpFragment"
@@ -18,7 +18,7 @@
     </fragment>
     <fragment
         android:id="@+id/signUpFragment"
-        android:name="com.example.napets.ui.signup.view.SignUpFragment"
+        android:name="com.quantumcode.napets.ui.signup.view.SignUpFragment"
         android:label="SignUpFragment" >
         <action
             android:id="@+id/action_signUpFragment_to_loginFragment"
