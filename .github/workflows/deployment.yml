@@ -1,18 +1,13 @@
-name: Build and Test CI
+name: Deployment
 
 on:
   push:
     branches:
-      - "feature/*"
-      - "bugfix/*"
-      - "fix/*"
-      - "config/*"
+      - "main"
+
   pull_request:
     branches:
-      - "feature/*"
-      - "bugfix/*"
-      - "fix/*"
-      - "config/*"
+      - "main"
 
 jobs:
   build_and_test:
@@ -26,7 +21,7 @@ jobs:
     steps:
       - name: Setup actions
         uses: actions/checkout@v3
-        
+
       - name: Set up JDK 17
         uses: actions/setup-java@v3
         with:
@@ -40,9 +35,16 @@ jobs:
       - name: Build app
         run: ./gradlew assemble
 
-      - name: Unit Test
-        run: ./gradlew testDebugUnitTest
+      - name: Generate AAR and APK files
+        if: always()
+        run: ./gradlew assembleDebug
 
-      - name: Android Test Report
-        uses: asadmansr/android-test-report-action@v1.2.0
-        if: ${{ always() }}
+      - name: Upload AAR files
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: artifacts.zip
+          path: |
+            app/build/**/outputs/**/*.apk
+            napets-app/build/outputs/aar
+          if-no-files-found: error
