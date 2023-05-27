@@ -1,4 +1,4 @@
-package com.quantumcode.napets.data.model
+package com.quantumcode.napets.data.model.auth
 
 import android.os.Parcelable
 import com.google.gson.annotations.JsonAdapter

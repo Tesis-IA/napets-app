@@ -11,11 +11,4 @@ class MainViewModel @Inject constructor(
     private val authenticationRepository: IAuthenticationRepository
 ) : BaseViewModel() {
 
-
-    fun getUsers(){
-        runBlockingCoroutine(Dispatchers.IO){
-            authenticationRepository.getUsers()
-        }
-    }
-
 }

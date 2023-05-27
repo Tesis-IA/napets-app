@@ -1,89 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
+
     <data>
+
         <variable
             name="viewModel"
             type="com.quantumcode.napets.ui.login.viewmodel.LoginViewModel" />
 
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:orientation="vertical"
-        xmlns:android="http://schemas.android.com/apk/res/android"
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
-        android:gravity="center"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/ic_background_login"
+        android:gravity="center"
+        android:orientation="vertical"
         tools:context=".ui.login.view.LoginFragment">
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent">
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <carbon.widget.LinearLayout
                 android:layout_width="match_parent"
-                android:orientation="vertical"
+                android:layout_height="wrap_content"
                 android:layout_margin="15dp"
-                android:layout_height="wrap_content">
+                android:orientation="vertical">
 
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textAlignment="center"
                     android:elegantTextHeight="true"
-                    android:textSize="18sp"
-                    android:textAllCaps="true"
-                    android:textColor="#3F6953"
+                    android:fontFamily="@font/cera_pro_bold"
                     android:text="@string/bienvenido_de_vuelta"
-                    android:fontFamily="@font/cera_pro_bold"/>
+                    android:textAlignment="center"
+                    android:textAllCaps="true"
+                    android:textColor="@color/text_color_headline"
+                    android:textSize="18sp" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textAlignment="center"
                     android:layout_marginTop="10dp"
                     android:elegantTextHeight="true"
-                    android:textSize="18sp"
-                    android:textColor="#3F6953"
+                    android:fontFamily="@font/cera_pro_light"
                     android:text="@string/ingresa_a_tu_cuenta"
-                    android:fontFamily="@font/cera_pro_light"/>
+                    android:textAlignment="center"
+                    android:textColor="@color/text_color_headline"
+                    android:textSize="18sp" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/login_layout_input_email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="30dp"
-                    app:endIconMode="custom"
+                    app:boxBackgroundMode="outline"
                     app:endIconDrawable="@drawable/ic_outline_check_circle_24"
-                    app:boxBackgroundMode="outline">
+                    app:endIconMode="custom">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/login_text_email"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:autofillHints="emailAddress"
+                        android:background="@drawable/bg_rounded"
+                        android:drawableStart="@drawable/ic_round_email_24"
+                        android:drawablePadding="5dp"
+                        android:fontFamily="@font/cera_pro_medium"
+                        android:hint="@string/correo_electr_nico"
                         android:inputType="textEmailAddress"
                         android:textColorHint="#87E675"
-                        android:fontFamily="@font/cera_pro_medium"
-                        android:background="@drawable/bg_rounded"
-                        android:hint="@string/correo_electr_nico"
-                        android:drawablePadding="5dp"
-                        android:textSize="14sp"
-                        android:drawableStart="@drawable/ic_round_email_24"
-                        android:autofillHints="emailAddress"/>
+                        android:textSize="14sp" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/login_layout_input_password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:passwordToggleEnabled="true"
-                    app:passwordToggleTintMode="multiply"
                     android:layout_marginTop="40dp"
-                    app:boxBackgroundMode="outline">
+                    app:boxBackgroundMode="outline"
+                    app:passwordToggleEnabled="true"
+                    app:passwordToggleTintMode="multiply">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/login_text_password"
@@ -93,83 +94,85 @@
                         android:background="@drawable/bg_rounded"
                         android:drawableStart="@drawable/ic_round_lock_24"
                         android:drawablePadding="5dp"
-                        android:textSize="14sp"
                         android:fontFamily="@font/cera_pro_medium"
                         android:hint="@string/contrase_a"
                         android:inputType="textPassword"
                         android:textColorHint="#87E675"
+                        android:textSize="14sp"
                         tools:ignore="SpeakableTextPresentCheck" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <androidx.appcompat.widget.LinearLayoutCompat
                     android:layout_width="match_parent"
-                    android:orientation="horizontal"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
                     <com.google.android.material.checkbox.MaterialCheckBox
                         android:id="@+id/login_checkmark_remember_password"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:textSize="14sp"
-                        android:fontFamily="@font/cera_pro_medium"
-                        android:textColor="@color/text_headline"
                         android:layout_weight="1"
-                        android:text="@string/recordarme"/>
+                        android:fontFamily="@font/cera_pro_medium"
+                        android:text="@string/recordarme"
+                        android:textColor="@color/text_color_headline"
+                        android:textSize="12sp" />
 
-                    <androidx.appcompat.widget.AppCompatButton
+                    <com.google.android.material.button.MaterialButton
                         android:id="@+id/login_button_forget_password"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/cera_pro_medium"
                         android:layout_marginTop="10dp"
-                        android:background="@android:color/transparent"
                         android:layout_weight="0"
+                        android:background="@android:color/transparent"
+                        android:fontFamily="@font/cera_pro_medium"
+                        android:text="@string/olvidaste_tu_contrase_a"
                         android:textAllCaps="false"
-                        android:textColor="@color/text_headline"
-                        android:textSize="14sp"
-                        android:text="@string/olvidaste_tu_contrase_a"/>
+                        android:textColor="@color/text_color_headline"
+                        android:textSize="12sp" />
+
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/login_button_sign_in"
+                    style="@style/ButtonShape"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="40dp"
-                    android:textSize="18sp"
                     android:elevation="0dp"
-                    style="@style/ButtonShape"
                     android:fontFamily="@font/cera_pro_bold"
+                    android:text="@string/ingresar"
                     android:textColor="@color/white"
-                    android:text="@string/ingresar"/>
+                    android:textSize="18sp" />
 
                 <androidx.appcompat.widget.LinearLayoutCompat
                     android:layout_width="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="20dp"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:layout_height="wrap_content">
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
 
-                    <androidx.appcompat.widget.AppCompatTextView
+                    <com.google.android.material.textview.MaterialTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="14sp"
-                        android:textColor="#3F6953"
-                        android:fontFamily="@font/cera_pro_medium"
                         android:layout_marginEnd="2dp"
-                        android:text="@string/no_tienes_cuenta"/>
+                        android:fontFamily="@font/cera_pro_medium"
+                        android:text="@string/no_tienes_cuenta"
+                        android:textColor="#3F6953"
+                        android:textSize="14sp" />
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/login_button_to_register"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/text_headline"
-                        android:fontFamily="@font/cera_pro_bold"
-                        android:textSize="14sp"
-                        android:textAllCaps="false"
                         android:background="@android:color/transparent"
-                        android:text="@string/registrarse"/>
+                        android:fontFamily="@font/cera_pro_bold"
+                        android:text="@string/registrarse"
+                        android:textAllCaps="false"
+                        android:textColor="@color/text_color_headline"
+                        android:textSize="14sp" />
+
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
             </carbon.widget.LinearLayout>
@@ -178,11 +181,11 @@
 
         <include
             layout="@layout/layout_loading_full_screen"
-            app:isVisible="@{viewModel.showLoading}"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent"
+            app:visibility="@{viewModel.showLoading}" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

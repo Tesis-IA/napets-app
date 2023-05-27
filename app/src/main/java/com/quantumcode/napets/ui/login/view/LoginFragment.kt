@@ -10,6 +10,8 @@ import com.quantumcode.napets.databinding.FragmentLoginBinding
 import com.quantumcode.napets.ui.base.BaseFragment
 import com.quantumcode.napets.ui.login.viewmodel.LoginViewModel
 import com.google.android.material.snackbar.Snackbar
+import com.quantumcode.napets.data.utils.validateEmail
+import com.quantumcode.napets.data.utils.validatePassword
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -18,8 +20,6 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
     override var isBottomNavVisible = View.GONE
 
     private val viewModel: LoginViewModel by viewModels()
-    private var isEmailValid: Boolean = false
-    private var isPasswordValid: Boolean = false
 
     override fun getViewBinding() = FragmentLoginBinding.inflate(layoutInflater)
 
@@ -33,34 +33,23 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
         viewModel.isAuthenticated.observe(viewLifecycleOwner) {
             // TODO: If it's true will should be navigate the next screen
         }
+
         viewModel.errorResponse.observe(viewLifecycleOwner) {
             Snackbar.make(binding.root, it.toString(), Snackbar.LENGTH_LONG).show()
+        }
+
+        viewModel.password.observe(viewLifecycleOwner) {
+            binding.loginLayoutInputPassword.error = it
+        }
+
+        viewModel.email.observe(viewLifecycleOwner) {
+            binding.loginLayoutInputEmail.error = it
         }
     }
 
     private fun setListeners() {
         binding.loginButtonSignIn.setOnClickListener {
-            when {
-                !isEmailValid && !isPasswordValid -> {
-                    binding.loginLayoutInputEmail.error = "Ingrese un correo válido"
-                    binding.loginLayoutInputPassword.error =
-                        "La contraseña debe tener un mínimo de 8 caracteres"
-                }
-                !isEmailValid -> {
-                    binding.loginLayoutInputEmail.error = "Ingrese un correo válido"
-                }
-                !isPasswordValid -> {
-                    binding.loginLayoutInputPassword.error =
-                        "La contraseña debe tener un mínimo de 8 caracteres"
-                }
-                else -> {
-                    viewModel.login(
-                        binding.loginTextEmail.text.toString(),
-                        binding.loginTextPassword.text.toString()
-                    )
-                    clearError()
-                }
-            }
+            viewModel.validateCredential(binding.loginTextEmail.text.toString(), binding.loginTextPassword.text.toString())
         }
 
         binding.loginButtonToRegister.setOnClickListener {
@@ -68,24 +57,17 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
         }
 
         binding.loginTextEmail.doOnTextChanged { text, _, _, _ ->
-            if (!text.isNullOrEmpty()) {
-                isEmailValid = if (text.contains("@") && text.contains(".com")) {
-                    binding.loginLayoutInputEmail.setEndIconDrawable(R.drawable.ic_baseline_check_circle_24)
-                    binding.loginLayoutInputEmail.error = ""
-                    true
-                } else {
-                    binding.loginLayoutInputEmail.setEndIconDrawable(R.drawable.ic_outline_check_circle_24)
-                    false
-                }
+            if (!text.isNullOrEmpty() && text.toString().validateEmail()) {
+                binding.loginLayoutInputEmail.setEndIconDrawable(R.drawable.ic_baseline_check_circle_24)
+                binding.loginLayoutInputEmail.error = ""
+            } else {
+                binding.loginLayoutInputEmail.setEndIconDrawable(R.drawable.ic_outline_check_circle_24)
             }
         }
 
         binding.loginTextPassword.doOnTextChanged { text, _, _, _ ->
-            if (!text.isNullOrEmpty()) {
-                isPasswordValid = text.length >= 8
-                if(isPasswordValid){
-                    binding.loginLayoutInputPassword.error = ""
-                }
+            if (!text.isNullOrEmpty() && text.toString().validatePassword()) {
+                clearError()
             }
         }
     }

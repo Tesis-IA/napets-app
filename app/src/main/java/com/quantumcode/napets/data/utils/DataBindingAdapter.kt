@@ -4,7 +4,7 @@ import android.view.View
 import androidx.databinding.BindingAdapter
 
 object DataBindingAdapter {
-    @BindingAdapter("isVisible")
+    @BindingAdapter("visibility")
     @JvmStatic
     fun setIsVisible(view: View, visibility: Boolean){
         when(visibility){

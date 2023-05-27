@@ -1,7 +1,7 @@
 package com.quantumcode.napets.data.domainmodel
 
 import android.os.Parcelable
-import com.quantumcode.napets.data.model.UserData
+import com.quantumcode.napets.data.model.auth.UserData
 import com.squareup.moshi.JsonClass
 import kotlinx.parcelize.Parcelize
 

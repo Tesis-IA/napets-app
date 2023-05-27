@@ -2,7 +2,7 @@ package com.quantumcode.napets.data.repository
 
 import com.quantumcode.napets.core.ApiService
 import com.quantumcode.napets.data.domainmodel.UserResponse
-import com.quantumcode.napets.data.model.UserLogin
+import com.quantumcode.napets.data.model.auth.UserLogin
 import retrofit2.Response
 import javax.inject.Inject
 
@@ -25,9 +25,5 @@ class AuthenticationRepositoryImp @Inject constructor(
         username: String
     ): UserResponse {
         TODO("Not yet implemented")
-    }
-
-    override suspend fun getUsers() {
-        val users = apiService.getUsers()
     }
 }
