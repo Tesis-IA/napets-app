@@ -32,7 +32,7 @@
                     android:textAlignment="center"
                     android:elegantTextHeight="true"
                     android:textSize="20sp"
-                    android:textColor="@color/text_headline"
+                    android:textColor="@color/primary_color"
                     android:text="@string/reg_strate"
                     android:fontFamily="@font/cera_pro_bold"/>
 
@@ -43,7 +43,7 @@
                     android:layout_marginTop="10dp"
                     android:elegantTextHeight="true"
                     android:textSize="20sp"
-                    android:textColor="@color/text_headline"
+                    android:textColor="@color/primary_color"
                     android:text="@string/crea_una_nueva_cuenta"
                     android:fontFamily="@font/cera_pro_light"/>
 
@@ -137,7 +137,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/al_iniciar_sesi_n_aceptas_nuestro_equipo_de_uso_y_pol_tica_de_privacidad"
                     android:fontFamily="@font/cera_pro_bold"
-                    android:textColor="@color/text_headline"
+                    android:textColor="@color/primary_color"
                     android:textSize="14sp"
                     android:elegantTextHeight="true"
                     android:layout_marginTop="20dp"
@@ -164,7 +164,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="14sp"
-                        android:textColor="@color/text_headline"
+                        android:textColor="@color/primary_color"
                         android:fontFamily="@font/cera_pro_medium"
                         android:layout_marginEnd="2dp"
                         android:text="@string/ya_tienes_una_cuenta"/>
@@ -172,7 +172,7 @@
                         android:id="@+id/sign_up_button_to_login"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/text_headline"
+                        android:textColor="@color/primary_color"
                         android:fontFamily="@font/cera_pro_bold"
                         android:textSize="14sp"
                         style="@style/ButtonShape"

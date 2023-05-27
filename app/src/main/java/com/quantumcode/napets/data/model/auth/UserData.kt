@@ -2,6 +2,7 @@ package com.quantumcode.napets.data.model.auth
 
 import android.os.Parcelable
 import com.google.gson.annotations.JsonAdapter
+import com.quantumcode.napets.data.domainmodel.UserResponse
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 import kotlinx.parcelize.Parcelize

@@ -1,15 +1,14 @@
 package com.quantumcode.napets.ui.login.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
-import com.quantumcode.napets.data.repository.IAuthenticationRepository
+import androidx.lifecycle.viewModelScope
+import com.quantumcode.napets.data.repository.auth.IAuthenticationRepository
 import com.quantumcode.napets.data.utils.validateEmail
 import com.quantumcode.napets.data.utils.validatePassword
 import com.quantumcode.napets.ui.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import javax.inject.Inject
-import kotlin.math.log
 
 @HiltViewModel
 class LoginViewModel @Inject constructor(
@@ -26,17 +25,22 @@ class LoginViewModel @Inject constructor(
     val errorResponse get() = _errorResponse
 
     private fun login(email: String, password: String) {
-        runBlockingCoroutine(Dispatchers.IO){
-            val result = authenticationRepository.userLogin(
+        viewModelScope.launch {
+            val isSuccess = authenticationRepository.userLogin(
                 email = email,
-                password = password
+                password = password,
+                handleErrorLogin = ::handleErrorLogin
             )
-            Log.i("success", result.toString())
+            _isAuthenticated.postValue(isSuccess)
         }
         showLoading = false
     }
 
-    fun validateCredential(emailToValidate: String, passwordToValidate: String) {
+    private fun handleErrorLogin(message: String) {
+        _errorResponse.postValue(message)
+    }
+
+    fun validateCredentials(emailToValidate: String, passwordToValidate: String) {
         when {
             !emailToValidate.validateEmail() && !passwordToValidate.validatePassword() -> {
                 password.postValue("La contraseña debe tener un mínimo de 8 caracteres")

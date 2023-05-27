@@ -58,12 +58,19 @@
                                 <LayoutPositions />
                               </value>
                             </entry>
-                            <entry key="action_loginFragment_to_signUpFragment2">
-                              <value>
-                                <LayoutPositions />
-                              </value>
-                            </entry>
                           </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="nav_graph_home">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="-416" />
+                            <option name="y" value="-483" />
+                          </Point>
                         </option>
                       </LayoutPositions>
                     </value>

@@ -1,5 +1,6 @@
 package com.quantumcode.napets.ui.home.view
 
+import android.view.View
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import com.quantumcode.napets.databinding.FragmentHomeBinding
@@ -10,6 +11,7 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class HomeFragment : BaseFragment<FragmentHomeBinding>() {
+    override var isBottomNavVisible = View.VISIBLE
     private val viewModel: HomeViewModel by viewModels()
     private val mainViewModel: MainViewModel by activityViewModels()
 

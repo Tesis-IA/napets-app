@@ -24,7 +24,7 @@
 hs_err_pid*
 
 # gradle
-.gradle/
+.gradle/*
 
 
 # Android Studio generated files and folders

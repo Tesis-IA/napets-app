@@ -85,7 +85,7 @@
                         android:fontFamily="@font/cera_pro_bold"
                         android:textAlignment="center"
                         android:text="@string/mis_cultivos"
-                        android:textColor="@color/text_color_headline"
+                        android:textColor="@color/primary_color"
                         android:textSize="14sp" />
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -125,7 +125,7 @@
                         android:fontFamily="@font/cera_pro_bold"
                         android:textAlignment="center"
                         android:text="@string/plagas_y_enfermedades"
-                        android:textColor="@color/text_color_headline"
+                        android:textColor="@color/primary_color"
                         android:textSize="14sp" />
                 </androidx.appcompat.widget.LinearLayoutCompat>
 

@@ -14,8 +14,8 @@ abstract class BaseViewModel : ViewModel() {
     ): Job {
         return CoroutineScope(coroutineContext).launch {
             try {
-                runBLocking.invoke()
                 showLoading = true
+                runBLocking.invoke()
             } catch (e: Exception) {
                 e.message?.let { error(it) }
             }

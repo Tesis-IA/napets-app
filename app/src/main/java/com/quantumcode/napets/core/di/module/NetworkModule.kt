@@ -1,5 +1,6 @@
-package com.quantumcode.napets.core.di
+package com.quantumcode.napets.core.di.module
 
+import com.haroldadmin.cnradapter.NetworkResponseAdapterFactory
 import com.quantumcode.napets.core.ApiService
 import dagger.Module
 import dagger.Provides
@@ -9,6 +10,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
+import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
@@ -22,8 +24,8 @@ object NetworkModule {
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit = Retrofit.Builder()
         .baseUrl(com.quantumcode.napets.BuildConfig.BASE_URL)
         .client(okHttpClient)
-        .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-        .addConverterFactory(MoshiConverterFactory.create())
+        .addCallAdapterFactory(NetworkResponseAdapterFactory())
+        .addConverterFactory(GsonConverterFactory.create())
         .build()
 
     @Singleton

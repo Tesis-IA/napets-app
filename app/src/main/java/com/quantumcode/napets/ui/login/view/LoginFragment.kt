@@ -12,6 +12,7 @@ import com.quantumcode.napets.ui.login.viewmodel.LoginViewModel
 import com.google.android.material.snackbar.Snackbar
 import com.quantumcode.napets.data.utils.validateEmail
 import com.quantumcode.napets.data.utils.validatePassword
+import com.quantumcode.napets.ui.main.view.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -31,7 +32,9 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
 
     private fun setObservers() {
         viewModel.isAuthenticated.observe(viewLifecycleOwner) {
-            // TODO: If it's true will should be navigate the next screen
+            if(it) {
+                (activity as MainActivity).navigateToHome()
+            }
         }
 
         viewModel.errorResponse.observe(viewLifecycleOwner) {
@@ -49,7 +52,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
 
     private fun setListeners() {
         binding.loginButtonSignIn.setOnClickListener {
-            viewModel.validateCredential(binding.loginTextEmail.text.toString(), binding.loginTextPassword.text.toString())
+            viewModel.validateCredentials(binding.loginTextEmail.text.toString(), binding.loginTextPassword.text.toString())
         }
 
         binding.loginButtonToRegister.setOnClickListener {
