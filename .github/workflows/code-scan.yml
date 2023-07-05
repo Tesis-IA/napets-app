@@ -9,6 +9,8 @@ on:
       - "*"
 
 jobs:
-  steps:
-    - name: Run Detekt
-    - run: ./gradlew detekt
+  CodeScan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run Detekt
+      - run: ./gradlew detekt
