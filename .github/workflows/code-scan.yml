@@ -3,10 +3,16 @@ name: Code Scan
 on:
   push:
     branches:
-      - "*"
+      - "feature/*"
+      - "bugfix/*"
+      - "fix/*"
+      - "config/*"
   pull_request:
     branches:
-      - "*"
+      - "feature/*"
+      - "bugfix/*"
+      - "fix/*"
+      - "config/*"
 
 jobs:
   CodeScan:
