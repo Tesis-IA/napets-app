@@ -1,0 +1,14 @@
+name: Code Scan
+
+on:
+  push:
+    branches:
+      - "*"
+  pull_request:
+    branches:
+      - "*"
+
+jobs:
+  steps:
+    - name: Run Detekt
+    - run: ./gradlew detekt

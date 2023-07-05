@@ -42,5 +42,4 @@ abstract class BaseFragment<B: ViewBinding> : Fragment() {
     private fun init() {
         binding = getViewBinding()
     }
-
 }

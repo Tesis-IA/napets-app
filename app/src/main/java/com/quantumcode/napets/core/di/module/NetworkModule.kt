@@ -2,6 +2,7 @@ package com.quantumcode.napets.core.di.module
 
 import com.haroldadmin.cnradapter.NetworkResponseAdapterFactory
 import com.quantumcode.napets.core.ApiService
+import com.quantumcode.napets.data.utils.Constant
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -35,10 +36,10 @@ object NetworkModule {
         interceptor.level = HttpLoggingInterceptor.Level.BODY
         return OkHttpClient.Builder()
             .addInterceptor(interceptor)
-            .callTimeout(30, TimeUnit.SECONDS)
-            .connectTimeout(30, TimeUnit.SECONDS)
-            .readTimeout(30, TimeUnit.SECONDS)
-            .writeTimeout(30, TimeUnit.SECONDS)
+            .callTimeout(Constant.TIMEOUT, TimeUnit.SECONDS)
+            .connectTimeout(Constant.TIMEOUT, TimeUnit.SECONDS)
+            .readTimeout(Constant.TIMEOUT, TimeUnit.SECONDS)
+            .writeTimeout(Constant.TIMEOUT, TimeUnit.SECONDS)
             .build()
     }
 
