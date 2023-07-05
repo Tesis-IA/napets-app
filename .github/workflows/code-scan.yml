@@ -27,4 +27,4 @@ jobs:
         uses: gradle/gradle-build-action@v2
 
       - name: Run Detekt
-      - run: ./gradlew detekt
+        run: ./gradlew detekt
