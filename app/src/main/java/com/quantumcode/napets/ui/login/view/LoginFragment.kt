@@ -52,7 +52,10 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
 
     private fun setListeners() {
         binding.loginButtonSignIn.setOnClickListener {
-            viewModel.validateCredentials(binding.loginTextEmail.text.toString(), binding.loginTextPassword.text.toString())
+            viewModel.validateCredentials(
+                binding.loginTextEmail.text.toString(),
+                binding.loginTextPassword.text.toString()
+            )
         }
 
         binding.loginButtonToRegister.setOnClickListener {
@@ -76,7 +79,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
     }
 
     private fun clearError(){
-        binding.loginLayoutInputEmail.error = ""
-        binding.loginLayoutInputPassword.error = ""
+        binding.loginLayoutInputEmail.error = null
+        binding.loginLayoutInputPassword.error = null
     }
 }

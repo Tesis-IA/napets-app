@@ -109,5 +109,4 @@ class SignUpFragment : BaseFragment<FragmentSignUpBinding>() {
         binding.signUpLayoutPassword.error = ""
         binding.signUpLayoutConfirmPassword.error = ""
     }
-
 }

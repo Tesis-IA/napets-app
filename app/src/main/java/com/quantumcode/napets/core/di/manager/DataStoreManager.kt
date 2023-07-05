@@ -16,10 +16,10 @@ private val Context.dataStore by preferencesDataStore(Constant.DATASTORE_PREFERE
 
 class DataStoreManager @Inject constructor(context: Context) {
 
-    private val dataStoreManager = context.dataStore
+    private val dataStore = context.dataStore
 
     private suspend fun <T> DataStore<Preferences>.getFromLocalStorage(
-        PreferencesKey: Preferences.Key<T>, func: T.() -> Unit
+        preferenceKey: Preferences.Key<T>, func: T.() -> Unit
     ) {
         data.catch {
             if (it is IOException) {
@@ -28,20 +28,20 @@ class DataStoreManager @Inject constructor(context: Context) {
                 throw it
             }
         }.map {
-            it[PreferencesKey]
+            it[preferenceKey]
         }.collect {
             it?.let { func.invoke(it as T) }
         }
     }
 
     suspend fun <T> storeValue(key: Preferences.Key<T>, value: T) {
-        dataStoreManager.edit {
+        dataStore.edit {
             it[key] = value
         }
     }
 
     suspend fun <T> readValue(key: Preferences.Key<T>, responseFunc: T.() -> Unit) {
-        dataStoreManager.getFromLocalStorage(key) {
+        dataStore.getFromLocalStorage(key) {
             responseFunc.invoke(this)
         }
     }
