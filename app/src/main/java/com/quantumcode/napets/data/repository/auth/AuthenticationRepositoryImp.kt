@@ -2,15 +2,16 @@ package com.quantumcode.napets.data.repository.auth
 
 import com.haroldadmin.cnradapter.NetworkResponse
 import com.quantumcode.napets.core.ApiService
-import com.quantumcode.napets.data.domainmodel.UserResponse
-import com.quantumcode.napets.data.model.auth.UserLogin
-import com.quantumcode.napets.data.repository.sharedpreferences.ISharedPreferencesRepository
-import com.quantumcode.napets.data.utils.Constant
+import com.quantumcode.napets.core.di.manager.DataStoreManager
+import com.quantumcode.napets.data.domainmodel.user.UserLoginRequest
+import com.quantumcode.napets.data.domainmodel.user.UserResponse
+import com.quantumcode.napets.data.model.auth.UserData
+import com.quantumcode.napets.data.utils.PreferencesKeys
 import javax.inject.Inject
 
 class AuthenticationRepositoryImp @Inject constructor(
     private val apiService: ApiService,
-    private val sharedPreferences: ISharedPreferencesRepository
+    private val dataStoreManager: DataStoreManager
 ) : IAuthenticationRepository {
     override suspend fun userLogin(
         email: String,
@@ -18,16 +19,17 @@ class AuthenticationRepositoryImp @Inject constructor(
         handleErrorLogin: (String) -> Unit
     ): Boolean {
         val response = apiService.login(
-            UserLogin(
-                username = email,
+            UserLoginRequest(
+                email = email,
                 password = password
             )
         )
         val isSuccessfully = when (response) {
             is NetworkResponse.Success -> {
-                sharedPreferences.setValue(Constant.TOKEN, response.body.accessToken)
-                sharedPreferences.setValue(Constant.EMAIL, response.body.user.email)
-                sharedPreferences.setValue(Constant.USER_ID, response.body.user.id)
+                val userData = UserData(response.body)
+                dataStoreManager.storeValue(PreferencesKeys.KEY, userData.token)
+                dataStoreManager.storeValue(PreferencesKeys.EMAIL, userData.email)
+                dataStoreManager.storeValue(PreferencesKeys.USER_ID, userData.id.toString())
                 true
             }
 

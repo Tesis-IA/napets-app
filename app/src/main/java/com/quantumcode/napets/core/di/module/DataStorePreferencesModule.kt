@@ -1,8 +1,7 @@
 package com.quantumcode.napets.core.di.module
 
 import android.content.Context
-import android.content.SharedPreferences
-import com.quantumcode.napets.data.utils.Constant
+import com.quantumcode.napets.core.di.manager.DataStoreManager
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -12,8 +11,8 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-class SharedPreferencesModule {
+class DataStorePreferencesModule {
     @Provides
     @Singleton
-    fun provideSharedPreferences(@ApplicationContext context: Context): SharedPreferences = context.getSharedPreferences(Constant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE)
+    fun provideDataStorePreferences(@ApplicationContext context: Context): DataStoreManager = DataStoreManager(context)
 }

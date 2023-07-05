@@ -62,7 +62,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
         binding.loginTextEmail.doOnTextChanged { text, _, _, _ ->
             if (!text.isNullOrEmpty() && text.toString().validateEmail()) {
                 binding.loginLayoutInputEmail.setEndIconDrawable(R.drawable.ic_baseline_check_circle_24)
-                binding.loginLayoutInputEmail.error = ""
+                binding.loginLayoutInputEmail.error = null
             } else {
                 binding.loginLayoutInputEmail.setEndIconDrawable(R.drawable.ic_outline_check_circle_24)
             }

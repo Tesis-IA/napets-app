@@ -179,15 +179,6 @@
 
         </androidx.core.widget.NestedScrollView>
 
-        <include
-            layout="@layout/layout_loading_full_screen"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:visibility="@{viewModel.showLoading}" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 
 </layout>
