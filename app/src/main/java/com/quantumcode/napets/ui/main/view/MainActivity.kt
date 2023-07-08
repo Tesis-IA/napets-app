@@ -3,7 +3,8 @@ package com.quantumcode.napets.ui.main.view
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.navigation.NavController
-import androidx.navigation.navOptions
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupActionBarWithNavController
 import com.quantumcode.napets.R
 import com.quantumcode.napets.data.extension.setupWithNavController
 import com.quantumcode.napets.ui.base.BaseActivity
@@ -54,7 +55,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     }
 
     fun navigateToHome() {
-
+        currentNavController?.setGraph(R.navigation.nav_graph_home)
     }
 
     fun isBottomNavVisible(visibility: Int){
