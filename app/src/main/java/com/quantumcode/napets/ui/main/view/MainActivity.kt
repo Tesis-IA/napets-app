@@ -4,7 +4,6 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.setupActionBarWithNavController
 import com.quantumcode.napets.R
 import com.quantumcode.napets.data.extension.setupWithNavController
 import com.quantumcode.napets.ui.base.BaseActivity
@@ -19,17 +18,27 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     private var currentNavController: NavController? = null
     private val navGraphIds = listOf(
-        R.navigation.nav_graph_home,
-        R.navigation.nav_graph_login
+        R.navigation.nav_home,
+        R.navigation.nav_login,
+        R.navigation.nav_camera,
+        R.navigation.nav_community,
+        R.navigation.nav_my_profile
     )
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if(savedInstanceState == null) setupBottomNavigation()
         setObservers()
+        viewModel.isAuthored()
     }
 
     private fun setObservers() {
-        navigateToLogin()
+        viewModel.isAuthored.observe(this) {
+            if(!it) {
+                navigateToLogin()
+            } else {
+                navigateToHome()
+            }
+        }
     }
 
     private fun setupBottomNavigation() {
@@ -50,12 +59,12 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         setupBottomNavigation()
     }
 
-    fun navigateToLogin(){
-        currentNavController?.navigate(R.id.action_homeFragment_to_nav_graph_login)
+    private fun navigateToLogin(){
+        currentNavController?.setGraph(R.navigation.nav_login)
     }
 
     fun navigateToHome() {
-        currentNavController?.setGraph(R.navigation.nav_graph_home)
+        currentNavController?.setGraph(R.navigation.nav_home)
     }
 
     fun isBottomNavVisible(visibility: Int){

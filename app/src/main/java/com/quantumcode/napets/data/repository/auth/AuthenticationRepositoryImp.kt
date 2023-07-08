@@ -58,4 +58,12 @@ class AuthenticationRepositoryImp @Inject constructor(
     ): UserResponse {
         TODO("Not yet implemented")
     }
+
+    override suspend fun isAuthenticate(): Boolean {
+        var isAuthenticated = false
+        dataStoreManager.readValue(PreferencesKeys.KEY) {
+            isAuthenticated = isNotBlank()
+        }
+        return isAuthenticated
+    }
 }

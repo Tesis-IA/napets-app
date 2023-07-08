@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_community"
+    app:startDestination="@id/homeCommunityFragment">
+
+    <fragment
+        android:id="@+id/homeCommunityFragment"
+        android:name="com.quantumcode.napets.ui.community.view.HomeCommunityFragment"
+        android:label="fragment_home_community"
+        tools:layout="@layout/fragment_home_community" />
+
+</navigation>
