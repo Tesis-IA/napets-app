@@ -14,7 +14,7 @@ class MainViewModel @Inject constructor(
     private val authenticationRepository: IAuthenticationRepository
 ) : BaseViewModel() {
 
-    private val _isAuthored = MutableLiveData<Boolean>()
+    private val _isAuthored = MutableLiveData(false)
     val isAuthored get() = _isAuthored
 
     fun isAuthored() {

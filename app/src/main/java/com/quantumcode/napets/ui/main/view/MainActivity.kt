@@ -21,7 +21,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         R.navigation.nav_home,
         R.navigation.nav_login,
         R.navigation.nav_camera,
-        R.navigation.nav_community,
         R.navigation.nav_my_profile
     )
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,12 +28,15 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         if(savedInstanceState == null) setupBottomNavigation()
         setObservers()
         viewModel.isAuthored()
-        navigateToLogin()
     }
 
     private fun setObservers() {
         viewModel.isAuthored.observe(this) {
-            navigateToLogin()
+            if(!it) {
+                navigateToLogin()
+            } else {
+                navigateToHome()
+            }
         }
     }
 
