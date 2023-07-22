@@ -12,11 +12,6 @@
         android:enabled="true"
         android:title="@string/escanear"/>
     <item
-        android:id="@+id/nav_community"
-        android:icon="@drawable/ic_community"
-        android:enabled="true"
-        android:title="@string/comunidad"/>
-    <item
         android:id="@+id/nav_my_profile"
         android:icon="@drawable/ic_user"
         android:enabled="true"
