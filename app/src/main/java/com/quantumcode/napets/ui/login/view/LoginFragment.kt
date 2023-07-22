@@ -5,12 +5,10 @@ import android.view.View
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.quantumcode.napets.R
 import com.quantumcode.napets.databinding.FragmentLoginBinding
 import com.quantumcode.napets.ui.base.BaseFragment
 import com.quantumcode.napets.ui.login.viewmodel.LoginViewModel
 import com.google.android.material.snackbar.Snackbar
-import com.quantumcode.napets.data.utils.validateEmail
 import com.quantumcode.napets.data.utils.validatePassword
 import com.quantumcode.napets.ui.main.view.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
@@ -37,38 +35,29 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
             }
         }
 
-        viewModel.errorResponse.observe(viewLifecycleOwner) {
-            Snackbar.make(binding.root, it.toString(), Snackbar.LENGTH_LONG).show()
+        viewModel.username.observe(viewLifecycleOwner) {
+            binding.loginLayoutInputUsername.error = it
         }
 
         viewModel.password.observe(viewLifecycleOwner) {
             binding.loginLayoutInputPassword.error = it
         }
 
-        viewModel.email.observe(viewLifecycleOwner) {
-            binding.loginLayoutInputEmail.error = it
+        viewModel.errorResponse.observe(viewLifecycleOwner) {
+            Snackbar.make(binding.root, it.toString(), Snackbar.LENGTH_LONG).show()
         }
     }
 
     private fun setListeners() {
         binding.loginButtonSignIn.setOnClickListener {
             viewModel.validateCredentials(
-                binding.loginTextEmail.text.toString(),
+                binding.loginTextUsername.text.toString(),
                 binding.loginTextPassword.text.toString()
             )
         }
 
         binding.loginButtonToRegister.setOnClickListener {
             findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToSignUpFragment())
-        }
-
-        binding.loginTextEmail.doOnTextChanged { text, _, _, _ ->
-            if (!text.isNullOrEmpty() && text.toString().validateEmail()) {
-                binding.loginLayoutInputEmail.setEndIconDrawable(R.drawable.ic_baseline_check_circle_24)
-                binding.loginLayoutInputEmail.error = null
-            } else {
-                binding.loginLayoutInputEmail.setEndIconDrawable(R.drawable.ic_outline_check_circle_24)
-            }
         }
 
         binding.loginTextPassword.doOnTextChanged { text, _, _, _ ->
@@ -79,7 +68,6 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
     }
 
     private fun clearError(){
-        binding.loginLayoutInputEmail.error = null
         binding.loginLayoutInputPassword.error = null
     }
 }

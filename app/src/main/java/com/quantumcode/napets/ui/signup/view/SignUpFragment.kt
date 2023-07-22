@@ -7,6 +7,8 @@ import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.quantumcode.napets.R
+import com.quantumcode.napets.data.utils.validateEmail
+import com.quantumcode.napets.data.utils.validatePassword
 import com.quantumcode.napets.databinding.FragmentSignUpBinding
 import com.quantumcode.napets.ui.base.BaseFragment
 import com.quantumcode.napets.ui.main.viewmodel.MainViewModel
@@ -21,9 +23,6 @@ class SignUpFragment : BaseFragment<FragmentSignUpBinding>() {
 
     override var isBottomNavVisible = View.GONE
     var isUsernameValid = false
-    var isEmailValid = false
-    var isPasswordValid = false
-    var isSamePassword = false
     override fun getViewBinding() = FragmentSignUpBinding.inflate(layoutInflater)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -33,80 +32,51 @@ class SignUpFragment : BaseFragment<FragmentSignUpBinding>() {
     }
 
     private fun setObservers() {
+        viewModel.password.observe(viewLifecycleOwner) {
+            binding.signUpLayoutPassword.error = it
+        }
 
+        viewModel.email.observe(viewLifecycleOwner) {
+            binding.signUpLayoutEmail.error = it
+        }
+
+        viewModel.username.observe(viewLifecycleOwner) {
+            binding.signUpLayoutUsername.error = it
+        }
     }
 
     private fun setListeners() {
         binding.signUpButtonToLogin.setOnClickListener {
-            findNavController().navigate(com.quantumcode.napets.ui.signup.view.SignUpFragmentDirections.actionSignUpFragmentToLoginFragment())
+            findNavController().navigate(SignUpFragmentDirections.actionSignUpFragmentToLoginFragment())
         }
 
         binding.signUpButtonRegister.setOnClickListener {
-            when {
-                !isEmailValid && !isPasswordValid && !isUsernameValid -> {
-                    binding.signUpLayoutEmail.error = "Ingrese un correo válido"
-                    binding.signUpLayoutPassword.error =
-                        "La contraseña debe tener un mínimo de 8 caracteres"
-                    binding.signUpLayoutUsername.error =
-                        "Campo requerido"
-                }
-                !isEmailValid -> {
-                    binding.signUpLayoutEmail.error = "Ingrese un correo válido"
-                }
-                !isPasswordValid -> {
-                    binding.signUpLayoutPassword.error =
-                        "La contraseña debe tener un mínimo de 8 caracteres"
-                }
-                !isUsernameValid -> {
-                    binding.signUpLayoutUsername.error =
-                        "Campo requerido"
-                }
-                binding.signUpPassword.text.toString() != binding.signUpConfirmPassword.text.toString() -> {
-                    binding.signUpLayoutConfirmPassword.error =
-                        "Las contraseñas no coinciden"
-                }
-                else -> {
-                    viewModel.registerUSer(
-                        username = binding.signUpUsername.text.toString(),
-                        email = binding.signUpEmail.text.toString(),
-                        password = binding.signUpPassword.text.toString()
-                    )
-                    clearError()
-                }
+            viewModel.validateCredentials(
+                binding.signUpUsername.text.toString(),
+                binding.signUpEmail.text.toString(),
+                binding.signUpPassword.text.toString()
+            )
+        }
+
+        binding.signUpPassword.doOnTextChanged { text, _, _, _ ->
+            if (!text.toString().validatePassword()) {
+                binding.signUpLayoutPassword.error = null
             }
         }
 
         binding.signUpUsername.doOnTextChanged { text, _, _, _ ->
-            isUsernameValid = !text.isNullOrEmpty()
-            if (isUsernameValid) binding.signUpLayoutUsername.error = ""
+            if (!text.isNullOrEmpty()) {
+                binding.signUpLayoutUsername.error = null
+            }
         }
 
         binding.signUpEmail.doOnTextChanged { text, _, _, _ ->
-            if (!text.isNullOrEmpty()) {
-                isEmailValid = if (text.contains("@") && text.contains(".com")) {
-                    binding.signUpLayoutEmail.setEndIconDrawable(R.drawable.ic_baseline_check_circle_24)
-                    binding.signUpLayoutEmail.error = ""
-                    true
-                } else {
-                    binding.signUpLayoutEmail.setEndIconDrawable(R.drawable.ic_outline_check_circle_24)
-                    false
-                }
+            if (!text.isNullOrEmpty() && text.toString().validateEmail()) {
+                binding.signUpLayoutEmail.setEndIconDrawable(R.drawable.ic_baseline_check_circle_24)
+                binding.signUpLayoutEmail.error = null
+            } else {
+                binding.signUpLayoutEmail.setEndIconDrawable(R.drawable.ic_outline_check_circle_24)
             }
         }
-
-        binding.signUpPassword.doOnTextChanged { text, _, _, _ ->
-            if (!text.isNullOrEmpty()) {
-                isPasswordValid = text.length >= 8
-                if (isPasswordValid) {
-                    binding.signUpLayoutPassword.error = ""
-                }
-            }
-        }
-    }
-
-    private fun clearError() {
-        binding.signUpLayoutEmail.error = ""
-        binding.signUpLayoutPassword.error = ""
-        binding.signUpLayoutConfirmPassword.error = ""
     }
 }

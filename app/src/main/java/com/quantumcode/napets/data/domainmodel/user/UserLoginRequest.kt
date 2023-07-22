@@ -1,6 +1,6 @@
 package com.quantumcode.napets.data.domainmodel.user
 
 data class UserLoginRequest(
-    val email: String,
+    val username: String,
     val password: String
 )

@@ -29,15 +29,12 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         if(savedInstanceState == null) setupBottomNavigation()
         setObservers()
         viewModel.isAuthored()
+        navigateToLogin()
     }
 
     private fun setObservers() {
         viewModel.isAuthored.observe(this) {
-            if(!it) {
-                navigateToLogin()
-            } else {
-                navigateToHome()
-            }
+            navigateToLogin()
         }
     }
 

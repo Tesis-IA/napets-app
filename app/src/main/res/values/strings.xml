@@ -8,23 +8,23 @@
     <string name="perfil">Perfil</string>
 
     <!--Login Fragment -->
-    <string name="bienvenido_de_vuelta">Bienvenido de vuelta</string>
-    <string name="ingresa_a_tu_cuenta">Ingresa a tu cuenta</string>
+    <string name="bienvenido_de_vuelta">Iniciar sesión</string>
+    <string name="ingresa_a_tu_cuenta">Por favor inicia sesión para continuar</string>
     <string name="correo_electr_nico">Correo electrónico</string>
     <string name="contrase_a">Contraseña</string>
     <string name="recordarme">Recordarme</string>
-    <string name="olvidaste_tu_contrase_a">¿Olvidaste tu contraseña?</string>
-    <string name="ingresar">Ingresar</string>
-    <string name="no_tienes_cuenta">¿No tienes cuenta?</string>
-    <string name="registrarse">Registrarse</string>
+    <string name="olvidaste_tu_contrase_a">He olvidado mi contraseña</string>
+    <string name="ingresar">Iniciar sesión</string>
+    <string name="no_tienes_cuenta">¿No tienes una cuenta?</string>
+    <string name="registrarse">Regístrate aquí</string>
 
     <!-- Sign In Fragment -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="reg_strate">Regístrate</string>
-    <string name="crea_una_nueva_cuenta">Crea una nueva cuenta</string>
+    <string name="crea_una_nueva_cuenta">Crea una cuenta</string>
     <string name="usuario">Usuario</string>
     <string name="confirmar_contrase_a">Confirmar contraseña</string>
-    <string name="al_iniciar_sesi_n_aceptas_nuestro_equipo_de_uso_y_pol_tica_de_privacidad">Al iniciar sesión, aceptas nuestro equipo de uso Y política de privacidad</string>
+    <string name="al_iniciar_sesi_n_aceptas_nuestro_equipo_de_uso_y_pol_tica_de_privacidad">Al iniciar sesión, aceptas nuestro equipo de uso y política de privacidad</string>
     <string name="ya_tienes_una_cuenta">¿Ya tienes una cuenta?</string>
     <string name="inciiar_sesi_n">Iniciar sesión</string>
 
@@ -33,4 +33,13 @@
     <string name="plagas_y_enfermedades">Plagas y \n Enfermedades</string>
     <string name="mis_cultivos">Mis cultivos</string>
     <string name="consejos_de_cultivos">Consejos de \n cultivos</string>
+
+    <!-- Home Camera Fragment-->
+    <string name="captura_una_fotograf_a_de_la_parte_afectada_de_la_planta">Captura una fotografía de la parte afectada de la planta</string>
+    <string name="sane_su_cultivo">Sane su cultivo</string>
+    <string name="tomar_foto">Tomar foto</string>
+    <string name="ver_diagn_stico">Ver diagnóstico</string>
+    <string name="obtener_el_tratamiento">Obtener el tratamiento</string>
+    <string name="nota_trate_de_que_la_fotograf_a_tomada_no_sea_borrosa_ya_que_afectar_en_la_detecci_n_de_la_enfermedad">Nota: Trate de que la fotografía tomada no sea borrosa, ya que afectará en la detección de la enfermedad.</string>
+    <string name="capturar_fotograf_a">Captura fotografía</string>
 </resources>

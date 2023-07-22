@@ -14,13 +14,13 @@ class AuthenticationRepositoryImp @Inject constructor(
     private val dataStoreManager: DataStoreManager
 ) : IAuthenticationRepository {
     override suspend fun userLogin(
-        email: String,
+        username: String,
         password: String,
         handleErrorLogin: (String) -> Unit
     ): Boolean {
         val response = apiService.login(
             UserLoginRequest(
-                email = email,
+                username = username,
                 password = password
             )
         )
