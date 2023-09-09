@@ -39,139 +39,18 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
 
-        <carbon.widget.ConstraintLayout
-            android:id="@+id/home_natural_container_options"
-            android:layout_width="0dp"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/home_subject_rv"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:layout_marginTop="20dp"
-            android:padding="6dp"
-            android:clipToPadding="false"
-            android:layout_marginHorizontal="4dp"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:orientation="horizontal"
+            tools:itemCount="3"
+            tools:listitem="@layout/item_layout_subject"
+            app:layout_constraintTop_toBottomOf="@id/home_search"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/home_search">
-
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/home_crops_card"
-                android:layout_width="0dp"
-                android:layout_height="140dp"
-                app:cardCornerRadius="15dp"
-                app:cardElevation="4dp"
-                android:layout_marginEnd="8dp"
-                android:clickable="true"
-                android:focusable="true"
-                android:foreground="?android:selectableItemBackground"
-                app:layout_constraintEnd_toStartOf="@id/home_pests_card"
-                app:layout_constraintStart_toStartOf="parent">
-
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <androidx.appcompat.widget.AppCompatImageView
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:layout_gravity="center"
-                        android:scaleType="fitCenter"
-                        android:src="@drawable/ic_my_crops" />
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:fontFamily="@font/cera_pro_bold"
-                        android:textAlignment="center"
-                        android:text="@string/mis_cultivos"
-                        android:textColor="@color/primary_color"
-                        android:textSize="14sp" />
-                </androidx.appcompat.widget.LinearLayoutCompat>
-
-            </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/home_pests_card"
-                android:layout_width="0dp"
-                android:layout_height="140dp"
-                app:cardCornerRadius="15dp"
-                app:cardElevation="4dp"
-                android:clickable="true"
-                android:focusable="true"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="5dp"
-                android:foreground="?android:selectableItemBackground"
-                app:layout_constraintStart_toEndOf="@id/home_crops_card"
-                app:layout_constraintEnd_toStartOf="@id/home_tips_card">
-
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <androidx.appcompat.widget.AppCompatImageView
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:layout_gravity="center"
-                        android:scaleType="fitCenter"
-                        android:src="@drawable/ic_pests" />
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:fontFamily="@font/cera_pro_bold"
-                        android:textAlignment="center"
-                        android:text="@string/plagas_y_enfermedades"
-                        android:textColor="@color/primary_color"
-                        android:textSize="14sp" />
-                </androidx.appcompat.widget.LinearLayoutCompat>
-
-            </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/home_tips_card"
-                android:layout_width="0dp"
-                android:layout_height="140dp"
-                android:layout_marginStart="5dp"
-                android:clickable="true"
-                android:focusable="true"
-                android:foreground="?android:selectableItemBackground"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/home_pests_card"
-                app:cardCornerRadius="15dp"
-                app:cardElevation="4dp">
-
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <androidx.appcompat.widget.AppCompatImageView
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:layout_gravity="center"
-                        android:scaleType="fitCenter"
-                        android:src="@drawable/ic_tips" />
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:fontFamily="@font/cera_pro_bold"
-                        android:textAlignment="center"
-                        android:text="@string/consejos_de_cultivos"
-                        android:textColor="#3F6953"
-                        android:textSize="14sp" />
-                </androidx.appcompat.widget.LinearLayoutCompat>
-
-            </com.google.android.material.card.MaterialCardView>
-
-        </carbon.widget.ConstraintLayout>
-
+            app:layout_constraintEnd_toEndOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

@@ -42,4 +42,5 @@
     <string name="obtener_el_tratamiento">Obtener el tratamiento</string>
     <string name="nota_trate_de_que_la_fotograf_a_tomada_no_sea_borrosa_ya_que_afectar_en_la_detecci_n_de_la_enfermedad">Nota: Trate de que la fotografía tomada no sea borrosa, ya que afectará en la detección de la enfermedad.</string>
     <string name="capturar_fotograf_a">Captura fotografía</string>
+    <string name="continuar_como_invitado">Continuar como invitado</string>
 </resources>

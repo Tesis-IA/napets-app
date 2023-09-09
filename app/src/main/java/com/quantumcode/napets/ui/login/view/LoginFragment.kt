@@ -22,13 +22,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
 
     override fun getViewBinding() = FragmentLoginBinding.inflate(layoutInflater)
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        setListeners()
-        setObservers()
-    }
-
-    private fun setObservers() {
+    override fun setObservers() {
         viewModel.isAuthenticated.observe(viewLifecycleOwner) {
             if(it) {
                 (activity as MainActivity).navigateToHome()
@@ -48,7 +42,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
         }
     }
 
-    private fun setListeners() {
+    override fun setListeners() {
         binding.loginButtonSignIn.setOnClickListener {
             viewModel.validateCredentials(
                 binding.loginTextUsername.text.toString(),
@@ -64,6 +58,10 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
             if (!text.isNullOrEmpty() && text.toString().validatePassword()) {
                 clearError()
             }
+        }
+
+        binding.continueAsGuest.setOnClickListener {
+            (activity as MainActivity).navigateToHome()
         }
     }
 

@@ -111,14 +111,14 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/login_button_forget_password"
+                    android:id="@+id/continue_as_guest"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:background="@android:color/transparent"
                     android:fontFamily="@font/cera_pro_medium"
                     android:padding="10dp"
-                    android:text="@string/olvidaste_tu_contrase_a"
+                    android:text="@string/continuar_como_invitado"
                     android:textAllCaps="false"
                     android:textColor="@color/text_color_hint" />
 

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.CallSuper
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
 import com.quantumcode.napets.ui.main.view.MainActivity
@@ -19,6 +20,16 @@ abstract class BaseFragment<B: ViewBinding> : Fragment() {
         super.onCreate(savedInstanceState)
         init()
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setListeners()
+        setObservers()
+    }
+
+    protected open fun setListeners() {}
+
+    protected open fun setObservers() {}
 
     override fun onCreateView(
         inflater: LayoutInflater,

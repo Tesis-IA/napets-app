@@ -25,13 +25,7 @@ class SignUpFragment : BaseFragment<FragmentSignUpBinding>() {
     var isUsernameValid = false
     override fun getViewBinding() = FragmentSignUpBinding.inflate(layoutInflater)
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        setListeners()
-        setObservers()
-    }
-
-    private fun setObservers() {
+    override fun setObservers() {
         viewModel.password.observe(viewLifecycleOwner) {
             binding.signUpLayoutPassword.error = it
         }
@@ -45,7 +39,7 @@ class SignUpFragment : BaseFragment<FragmentSignUpBinding>() {
         }
     }
 
-    private fun setListeners() {
+    override fun setListeners() {
         binding.signUpButtonToLogin.setOnClickListener {
             findNavController().navigate(SignUpFragmentDirections.actionSignUpFragmentToLoginFragment())
         }
