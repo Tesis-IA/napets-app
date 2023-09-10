@@ -1,4 +1,4 @@
-package com.quantumcode.napets.core
+package com.quantumcode.napets.core.service
 
 import com.quantumcode.napets.data.domainmodel.user.UserResponse
 import com.haroldadmin.cnradapter.NetworkResponse

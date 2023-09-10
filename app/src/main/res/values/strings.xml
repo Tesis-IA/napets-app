@@ -43,4 +43,13 @@
     <string name="nota_trate_de_que_la_fotograf_a_tomada_no_sea_borrosa_ya_que_afectar_en_la_detecci_n_de_la_enfermedad">Nota: Trate de que la fotografía tomada no sea borrosa, ya que afectará en la detección de la enfermedad.</string>
     <string name="capturar_fotograf_a">Captura fotografía</string>
     <string name="continuar_como_invitado">Continuar como invitado</string>
+
+    <!-- Drawer-->
+    <string name="profile">Perfil</string>
+    <string name="salir">Salir</string>
+    <string name="invita_un_amigo">Invitar un amigo</string>
+    <string name="ayuda_y_comentarios">Ayuda y comentarios</string>
+    <string name="close">Cerrar</string>
+    <string name="open">Abrir</string>
+    <string name="tus_necesidades_no_son_problemas_nuestros">Tus necesidades no son problemas nuestros.</string>
 </resources>

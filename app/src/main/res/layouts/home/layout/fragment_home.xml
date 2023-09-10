@@ -14,31 +14,6 @@
         android:background="@color/background"
         tools:context=".ui.home.view.HomeFragment">
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/home_search"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:textAllCaps="false"
-            android:textColor="@color/black"
-            android:layout_marginHorizontal="10dp"
-            android:backgroundTint="#FFFFFF"
-            android:text="@string/buscar_en_napets"
-            app:cornerRadius="20dp"
-            app:icon="@drawable/ic_search"
-            app:iconTint="#3F6953"
-            app:iconSize="16dp"
-            android:clickable="true"
-            android:focusable="true"
-            android:foreground="?android:selectableItemBackground"
-            android:elevation="0dp"
-            android:stateListAnimator="@null"
-            android:insetTop="0dp"
-            android:insetBottom="0dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/home_subject_rv"
             android:layout_width="match_parent"
@@ -48,7 +23,7 @@
             android:orientation="horizontal"
             tools:itemCount="3"
             tools:listitem="@layout/item_layout_subject"
-            app:layout_constraintTop_toBottomOf="@id/home_search"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>

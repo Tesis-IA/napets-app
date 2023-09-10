@@ -66,6 +66,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     app:boxBackgroundMode="outline"
+                    android:textColorHint="@color/text_color_hint"
                     app:endIconMode="custom">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -90,6 +91,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     app:boxBackgroundMode="outline"
+                    app:endIconTint="@color/text_color_hint"
+                    android:textColorHint="@color/text_color_hint"
                     app:passwordToggleEnabled="true"
                     app:passwordToggleTintMode="multiply">
 

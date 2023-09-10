@@ -2,10 +2,11 @@ package com.quantumcode.napets.ui.main.view
 
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.quantumcode.napets.R
-import com.quantumcode.napets.data.extension.setupWithNavController
+import com.quantumcode.napets.ui.extension.setupWithNavController
 import com.quantumcode.napets.ui.base.BaseActivity
 import com.quantumcode.napets.databinding.ActivityMainBinding
 import com.quantumcode.napets.ui.main.viewmodel.MainViewModel
@@ -16,6 +17,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     private val viewModel: MainViewModel by viewModels()
 
+    private lateinit var toggle: ActionBarDrawerToggle
     private var currentNavController: NavController? = null
     private val navGraphIds = listOf(
         R.navigation.nav_home,
@@ -26,8 +28,24 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if(savedInstanceState == null) setupBottomNavigation()
+        setupDrawerLayout()
         setObservers()
+        setListeners()
         viewModel.isAuthored()
+    }
+
+    private fun setListeners() {
+        binding.mainDrawerButton.setOnClickListener {
+            binding.root.openDrawer(binding.mainNavigationView, true)
+        }
+    }
+
+    private fun setupDrawerLayout() {
+        binding.mainDrawerButton.bringToFront()
+        toggle = ActionBarDrawerToggle(this, binding.root, R.string.close, R.string.open)
+        binding.root.addDrawerListener(toggle)
+        toggle.syncState()
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
     private fun setObservers() {
@@ -68,6 +86,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     fun isBottomNavVisible(visibility: Int){
         binding.mainBottomNavigation.visibility = visibility
+        binding.mainDrawerButton.visibility = visibility
+        binding.mainTextHeader.visibility = visibility
     }
 
     override fun onSupportNavigateUp(): Boolean {
