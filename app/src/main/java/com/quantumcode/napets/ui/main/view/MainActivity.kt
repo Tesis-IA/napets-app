@@ -3,8 +3,8 @@ package com.quantumcode.napets.ui.main.view
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
-import androidx.navigation.fragment.NavHostFragment
 import com.quantumcode.napets.R
 import com.quantumcode.napets.ui.extension.setupWithNavController
 import com.quantumcode.napets.ui.base.BaseActivity
@@ -85,9 +85,17 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     }
 
     fun isBottomNavVisible(visibility: Int){
-        binding.mainBottomNavigation.visibility = visibility
-        binding.mainDrawerButton.visibility = visibility
-        binding.mainTextHeader.visibility = visibility
+        binding.apply {
+            mainBottomNavigation.visibility = visibility
+            mainDrawerButton.visibility = visibility
+            mainTextHeader.visibility = visibility
+            mainBottomNavigation.visibility = visibility
+            if (visibility == 8) {
+                root.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
+            } else {
+                root.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
+            }
+        }
     }
 
     override fun onSupportNavigateUp(): Boolean {
