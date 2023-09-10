@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/homeProfileFragment"
-        android:name="com.quantumcode.napets.ui.my_profile.view.HomeProfileFragment"
+        android:name="com.quantumcode.napets.ui.myProfile.view.HomeProfileFragment"
         android:label="fragment_home_profile"
         tools:layout="@layout/fragment_home_profile" />
 </navigation>
