@@ -1,7 +1,7 @@
 package com.quantumcode.napets.data.repository.auth
 
 import com.haroldadmin.cnradapter.NetworkResponse
-import com.quantumcode.napets.core.ApiService
+import com.quantumcode.napets.core.service.ApiService
 import com.quantumcode.napets.core.di.manager.DataStoreManager
 import com.quantumcode.napets.data.domainmodel.user.UserLoginRequest
 import com.quantumcode.napets.data.domainmodel.user.UserResponse

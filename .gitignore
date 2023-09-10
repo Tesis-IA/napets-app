@@ -25,6 +25,8 @@ hs_err_pid*
 
 # gradle
 .gradle/*
+.gradle/buildOutputCleanup
+.gradle/vcs-1
 
 
 # Android Studio generated files and folders

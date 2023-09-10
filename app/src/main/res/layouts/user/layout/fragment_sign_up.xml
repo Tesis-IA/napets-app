@@ -52,6 +52,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
+                    android:textColorHint="@color/text_color_hint"
                     app:boxBackgroundMode="outline">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -73,6 +74,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     app:boxBackgroundMode="outline"
+                    android:textColorHint="@color/text_color_hint"
                     app:endIconDrawable="@drawable/ic_outline_check_circle_24">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -95,6 +97,8 @@
                     android:layout_marginTop="20dp"
                     app:boxBackgroundMode="outline"
                     app:passwordToggleEnabled="true"
+                    app:endIconTint="@color/text_color_hint"
+                    android:textColorHint="@color/text_color_hint"
                     app:passwordToggleTintMode="multiply">
 
                     <com.google.android.material.textfield.TextInputEditText
