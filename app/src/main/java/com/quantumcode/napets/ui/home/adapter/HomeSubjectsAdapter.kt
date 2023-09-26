@@ -11,8 +11,11 @@ import com.quantumcode.napets.BuildConfig
 import com.quantumcode.napets.R
 import com.quantumcode.napets.data.model.home.Subject
 import com.quantumcode.napets.databinding.ItemLayoutSubjectBinding
+import com.quantumcode.napets.ui.home.listener.SubjectsListener
 
-class HomeSubjectsAdapter : RecyclerView.Adapter<HomeSubjectsAdapter.HomeSubjectViewHolder>(){
+class HomeSubjectsAdapter(
+    private val subjectsListener: SubjectsListener
+) : RecyclerView.Adapter<HomeSubjectsAdapter.HomeSubjectViewHolder>(){
 
     private val subjectList: MutableList<Subject> = mutableListOf()
 
@@ -45,6 +48,9 @@ class HomeSubjectsAdapter : RecyclerView.Adapter<HomeSubjectsAdapter.HomeSubject
                     .load("${subject.image}${BuildConfig.SAS_RESOURCES}")
                     .diskCacheStrategy(DiskCacheStrategy.ALL)
                     .into(itemSubjectImage)
+                homeCropsCard.setOnClickListener {
+                    subjectsListener.onClickSubjectListener(subject)
+                }
             }
         }
     }

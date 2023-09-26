@@ -1,10 +1,15 @@
 package com.quantumcode.napets.ui.main.view
 
+import android.os.Build
 import android.os.Bundle
+import android.window.OnBackInvokedDispatcher
 import androidx.activity.viewModels
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.navigateUp
+import androidx.navigation.ui.setupWithNavController
 import com.quantumcode.napets.R
 import com.quantumcode.napets.ui.extension.setupWithNavController
 import com.quantumcode.napets.ui.base.BaseActivity
@@ -59,14 +64,12 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     }
 
     private fun setupBottomNavigation() {
-        val controller = binding.mainBottomNavigation.setupWithNavController(
+        binding.mainBottomNavigation.setupWithNavController(
             navGraphIds = navGraphIds,
             fragmentManager = supportFragmentManager,
             containerId = R.id.main_fragment_container,
             intent = intent
         )
-
-        currentNavController = controller.value
     }
 
     override fun getViewBinding() = ActivityMainBinding.inflate(layoutInflater)
@@ -77,18 +80,25 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     }
 
     private fun navigateToLogin(){
-        currentNavController?.setGraph(R.navigation.nav_login)
+        val newNavHostFragment = supportFragmentManager.findFragmentById(R.id.main_fragment_container) as NavHostFragment
+        val inflater = newNavHostFragment.navController.navInflater
+        val graph = inflater.inflate(R.navigation.nav_login)
+        newNavHostFragment.navController.graph = graph
+        currentNavController = newNavHostFragment.navController
     }
 
     fun navigateToHome() {
-        currentNavController?.setGraph(R.navigation.nav_home)
+        val newNavHostFragment = supportFragmentManager.findFragmentById(R.id.main_fragment_container) as NavHostFragment
+        val inflater = newNavHostFragment.navController.navInflater
+        val graph = inflater.inflate(R.navigation.nav_home)
+        newNavHostFragment.navController.graph = graph
+        currentNavController = newNavHostFragment.navController
     }
 
     fun isBottomNavVisible(visibility: Int){
         binding.apply {
             mainBottomNavigation.visibility = visibility
             mainDrawerButton.visibility = visibility
-            mainTextHeader.visibility = visibility
             mainBottomNavigation.visibility = visibility
             if (visibility == 8) {
                 root.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)

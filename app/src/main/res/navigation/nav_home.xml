@@ -9,6 +9,15 @@
         android:id="@+id/homeFragment"
         tools:layout="@layout/fragment_home"
         android:name="com.quantumcode.napets.ui.home.view.HomeFragment"
-        android:label="HomeFragment" />
+        android:label="HomeFragment" >
+        <action
+            android:id="@+id/action_homeFragment_to_myCropsFragment"
+            app:destination="@id/myCropsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/myCropsFragment"
+        android:name="com.quantumcode.napets.ui.myCrops.MyCropsFragment"
+        android:label="fragment_my_crops"
+        tools:layout="@layout/fragment_my_crops" />
 
 </navigation>
