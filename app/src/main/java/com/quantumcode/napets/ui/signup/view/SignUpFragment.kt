@@ -6,11 +6,13 @@ import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.snackbar.Snackbar
 import com.quantumcode.napets.R
 import com.quantumcode.napets.data.utils.validateEmail
 import com.quantumcode.napets.data.utils.validatePassword
 import com.quantumcode.napets.databinding.FragmentSignUpBinding
 import com.quantumcode.napets.ui.base.BaseFragment
+import com.quantumcode.napets.ui.main.view.MainActivity
 import com.quantumcode.napets.ui.main.viewmodel.MainViewModel
 import com.quantumcode.napets.ui.signup.viewmodel.SigInViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -26,6 +28,12 @@ class SignUpFragment : BaseFragment<FragmentSignUpBinding>() {
     override fun getViewBinding() = FragmentSignUpBinding.inflate(layoutInflater)
 
     override fun setObservers() {
+        viewModel.isAuthenticated.observe(viewLifecycleOwner) {
+            if(it) {
+                (activity as MainActivity).navigateToHome()
+            }
+        }
+
         viewModel.password.observe(viewLifecycleOwner) {
             binding.signUpLayoutPassword.error = it
         }
@@ -36,6 +44,10 @@ class SignUpFragment : BaseFragment<FragmentSignUpBinding>() {
 
         viewModel.username.observe(viewLifecycleOwner) {
             binding.signUpLayoutUsername.error = it
+        }
+
+        viewModel.errorResponse.observe(viewLifecycleOwner) {
+            Snackbar.make(binding.root, it.toString(), Snackbar.LENGTH_LONG).show()
         }
     }
 

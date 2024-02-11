@@ -12,13 +12,15 @@ data class UserData(
     val username: String,
     val email: String,
     val token: String,
-    val password: String
+    val password: String,
+    val deviceId: String
 ) : Parcelable {
     constructor(userResponse: UserResponse) : this(
         id = userResponse.id ?: 0,
         username = userResponse.username ?: "",
         email = userResponse.email ?: "",
         token = userResponse.token ?: "",
-        password = userResponse.password ?: ""
+        password = userResponse.password ?: "",
+        deviceId = userResponse.deviceId ?: ""
     )
 }

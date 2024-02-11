@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
@@ -41,10 +42,8 @@ class HomeSubjectsAdapter : RecyclerView.Adapter<HomeSubjectsAdapter.HomeSubject
         fun render(subject: Subject) {
             binding.apply {
                 itemSubjectTitle.text = subject.title
-                Glide.with(root.context)
-                    .load("${subject.image}${BuildConfig.SAS_RESOURCES}")
-                    .diskCacheStrategy(DiskCacheStrategy.ALL)
-                    .into(itemSubjectImage)
+                itemSubjectImage.setImageResource(subject.image)
+                itemSubjectImage.setColorFilter(ContextCompat.getColor(root.context, R.color.primary_color))
             }
         }
     }

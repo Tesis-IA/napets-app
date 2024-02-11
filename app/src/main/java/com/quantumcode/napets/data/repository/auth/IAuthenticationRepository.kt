@@ -5,7 +5,9 @@ import com.quantumcode.napets.data.domainmodel.user.UserResponse
 interface IAuthenticationRepository {
     suspend fun userLogin(username: String, password: String, handleErrorLogin: (String) -> Unit): Boolean
 
-    suspend fun createAccount(password: String, email: String, username: String): UserResponse
+    suspend fun createAccount(password: String, email: String, username: String, handleErrorSignup: (String) -> Unit): Boolean
+
+    suspend fun continueAsGuest(deviceId: String, handleErrorGuest: (String) -> Unit): Boolean
 
     suspend fun isAuthenticate(): Boolean
 }
