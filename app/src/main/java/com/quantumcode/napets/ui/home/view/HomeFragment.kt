@@ -21,8 +21,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
     override fun getViewBinding() = FragmentHomeBinding.inflate(layoutInflater)
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun createView(view: View, savedInstanceState: Bundle?) {
+        super.createView(view, savedInstanceState)
         setupRecyclers()
         viewModel.getSubjects()
     }

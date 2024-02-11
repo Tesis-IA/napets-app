@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@drawable/bg_corners_radius_dialog"
+    android:paddingVertical="20dp"
+    android:clipToPadding="false"
+    tools:context=".ui.camera.view.HelpTakePictureDialog">
+
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/consejos_para_el_diagn_stico"
+        android:fontFamily="@font/cera_pro_bold"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textAlignment="center"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/_1_ac_rquese_al_cultivo_y_aseg_rese_de_que_el_da_o_del_cultivo_quepa_dentro_del_marco"
+        android:layout_marginHorizontal="40dp"
+        android:textColor="@color/text_color"
+        android:layout_marginTop="20dp"
+        android:lineSpacingExtra="4dp"
+        android:fontFamily="@font/cera_pro_light"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/_2_aseg_rese_de_que_la_c_mara_est_correctamente_enfocada_en_el_da_o_al_cultivo"
+        android:layout_marginHorizontal="40dp"
+        android:textColor="@color/text_color"
+        android:layout_marginTop="20dp"
+        android:lineSpacingExtra="4dp"
+        android:fontFamily="@font/cera_pro_light"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/_3_aseg_rese_de_que_el_cultivo_sea_claramente_visible_y_no_est_demasiado_oscuro_ni_brillante"
+        android:layout_marginHorizontal="40dp"
+        android:textColor="@color/text_color"
+        android:layout_marginTop="20dp"
+        android:lineSpacingExtra="4dp"
+        android:fontFamily="@font/cera_pro_light"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/help_take_picture_dialog_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/entendido"
+        android:textColor="@color/white"
+        android:layout_marginTop="20dp"
+        app:cornerRadius="6dp"
+        android:fontFamily="@font/cera_pro_medium"
+        android:textAllCaps="false"
+        android:textSize="14sp"
+        android:letterSpacing="0.02"
+        android:layout_gravity="center_horizontal"
+        app:backgroundTint="@color/primary_color"/>
+
+</androidx.appcompat.widget.LinearLayoutCompat>

@@ -52,4 +52,11 @@
     <string name="close">Cerrar</string>
     <string name="open">Abrir</string>
     <string name="tus_necesidades_no_son_problemas_nuestros">Tus necesidades no son problemas nuestros.</string>
+
+    <!-- Help Take Picture Dialog -->
+    <string name="consejos_para_el_diagn_stico">Consejos para el diagnóstico</string>
+    <string name="_1_ac_rquese_al_cultivo_y_aseg_rese_de_que_el_da_o_del_cultivo_quepa_dentro_del_marco">1. Acérquese al cultivo y asegúrese de que el daño del cultivo quepa dentro del marco.</string>
+    <string name="_2_aseg_rese_de_que_la_c_mara_est_correctamente_enfocada_en_el_da_o_al_cultivo">2. Asegúrese de que la cámara esté correctamente enfocada en el daño al cultivo</string>
+    <string name="_3_aseg_rese_de_que_el_cultivo_sea_claramente_visible_y_no_est_demasiado_oscuro_ni_brillante">3. Asegúrese de que el cultivo sea claramente visible y no esté demasiado oscuro ni brillante</string>
+    <string name="entendido">Entendido</string>
 </resources>
