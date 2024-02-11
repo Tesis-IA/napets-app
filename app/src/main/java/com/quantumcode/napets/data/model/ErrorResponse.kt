@@ -6,4 +6,4 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 @JsonClass(generateAdapter = true)
-data class ErrorResponse(val message: String) : Parcelable
+data class ErrorResponse(val error: String) : Parcelable

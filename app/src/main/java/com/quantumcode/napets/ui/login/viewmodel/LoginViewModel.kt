@@ -28,14 +28,24 @@ class LoginViewModel @Inject constructor(
             val isSuccess = authenticationRepository.userLogin(
                 username = username,
                 password = password,
-                handleErrorLogin = ::handleErrorLogin
+                handleErrorLogin = ::handleErrorUser
             )
             _isAuthenticated.postValue(isSuccess)
         }
         showLoading = false
     }
 
-    private fun handleErrorLogin(message: String) {
+    fun continueAsGuest(deviceId: String) {
+        viewModelScope.launch {
+            val isSuccess = authenticationRepository.continueAsGuest(
+                deviceId = deviceId,
+                handleErrorGuest = ::handleErrorUser
+            )
+            _isAuthenticated.postValue(isSuccess)
+        }
+    }
+
+    private fun handleErrorUser(message: String) {
         _errorResponse.postValue(message)
     }
 

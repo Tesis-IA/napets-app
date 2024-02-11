@@ -1,6 +1,8 @@
 package com.quantumcode.napets.ui.login.view
 
+import android.annotation.SuppressLint
 import android.os.Bundle
+import android.provider.Settings
 import android.view.View
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.viewModels
@@ -42,6 +44,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
         }
     }
 
+    @SuppressLint("HardwareIds")
     override fun setListeners() {
         binding.loginButtonSignIn.setOnClickListener {
             viewModel.validateCredentials(
@@ -61,7 +64,8 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
         }
 
         binding.continueAsGuest.setOnClickListener {
-            (activity as MainActivity).navigateToHome()
+            val deviceId = Settings.Secure.getString(activity?.contentResolver, Settings.Secure.ANDROID_ID)
+            viewModel.continueAsGuest(deviceId)
         }
     }
 

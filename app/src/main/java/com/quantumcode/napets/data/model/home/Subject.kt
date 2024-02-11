@@ -7,5 +7,5 @@ import kotlinx.parcelize.Parcelize
 data class Subject(
     val id: Int,
     val title: String,
-    val image: String
+    val image: Int
 ) : Parcelable

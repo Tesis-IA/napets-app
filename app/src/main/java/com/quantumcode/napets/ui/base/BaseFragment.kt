@@ -11,7 +11,9 @@ import com.quantumcode.napets.ui.main.view.MainActivity
 
 abstract class BaseFragment<B: ViewBinding> : Fragment() {
 
-    lateinit var binding: B
+    private var _binding: B? = null
+    val binding get() = _binding!!
+
     protected open var isBottomNavVisible = View.VISIBLE
 
     protected abstract fun getViewBinding(): B
@@ -51,6 +53,6 @@ abstract class BaseFragment<B: ViewBinding> : Fragment() {
     }
 
     private fun init() {
-        binding = getViewBinding()
+        _binding = getViewBinding()
     }
 }

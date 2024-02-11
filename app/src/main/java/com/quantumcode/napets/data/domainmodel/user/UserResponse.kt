@@ -15,5 +15,7 @@ data class UserResponse(
     val password: String?,
     val token: String?,
     @SerializedName("auth_strategy")
-    val authStrategy: String?
+    val authStrategy: String?,
+    @SerializedName("device_id")
+    val deviceId: String?
 ) : Parcelable
