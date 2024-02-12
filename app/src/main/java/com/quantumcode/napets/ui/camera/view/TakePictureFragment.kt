@@ -1,42 +1,255 @@
 package com.quantumcode.napets.ui.camera.view
 
-import android.app.Activity
-import android.content.Intent
+import android.content.ContentValues
+import android.content.pm.ActivityInfo
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
+import android.graphics.Matrix
 import android.os.Build
+import android.os.Bundle
 import android.provider.MediaStore
+import android.transition.Visibility
+import android.util.Log
+import android.view.Surface
 import android.view.View
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.camera.core.CameraSelector
+import androidx.camera.core.CameraX
+import androidx.camera.core.ImageAnalysis
+import androidx.camera.core.ImageCapture
+import androidx.camera.core.ImageCaptureException
+import androidx.camera.core.Preview
+import androidx.camera.core.resolutionselector.AspectRatioStrategy
+import androidx.camera.core.resolutionselector.ResolutionSelector
+import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
 import com.quantumcode.napets.databinding.FragmentTakePictureBinding
 import com.quantumcode.napets.ui.base.BaseFragment
+import com.quantumcode.napets.ui.main.view.MainActivity
+import com.quantumcode.napets.ui.utils.removeProgress
+import com.quantumcode.napets.ui.utils.setGone
+import com.quantumcode.napets.ui.utils.setShowProgress
+import com.quantumcode.napets.ui.utils.setVisible
+import java.text.SimpleDateFormat
+import java.util.Locale
+import java.util.concurrent.ExecutorService
+import java.util.concurrent.Executors
+import java.util.concurrent.TimeUnit
 
 class TakePictureFragment : BaseFragment<FragmentTakePictureBinding>() {
 
+    companion object {
+        private const val FILENAME_FORMAT = "dd/MM/yyy/"
+    }
+
     override var isBottomNavVisible = View.GONE
+    private var imageCapture: ImageCapture? = null
+    private var cameraExecutor: ExecutorService? = null
+    private var bitmapBuffer: Bitmap? = null
+    private var imageRotationDegrees = 0
+    private var pauseAnalysis = false
 
     override fun getViewBinding() = FragmentTakePictureBinding.inflate(layoutInflater)
 
+    override fun createView(view: View, savedInstanceState: Bundle?) {
+        super.createView(view, savedInstanceState)
+        cameraExecutor =  Executors.newSingleThreadExecutor()
+        initializeCamera()
+    }
+
+    private fun initializeCamera() {
+        val cameraProviderFuture = ProcessCameraProvider.getInstance(requireContext())
+        cameraProviderFuture.addListener({
+            // Used to bind the lifecycle of cameras to the lifecycle owner
+            val cameraProvider = cameraProviderFuture.get()
+
+            //Preview
+            val preview = Preview.Builder()
+                .setResolutionSelector(
+                    ResolutionSelector.Builder()
+                        .setAspectRatioStrategy(
+                            AspectRatioStrategy.RATIO_4_3_FALLBACK_AUTO_STRATEGY
+                        )
+                        .setAspectRatioStrategy(AspectRatioStrategy.RATIO_4_3_FALLBACK_AUTO_STRATEGY)
+                        .build()
+                )
+                .setTargetRotation(binding.takePictureCameraPreview.display.rotation)
+                .build()
+                .also {
+                    it.setSurfaceProvider(binding.takePictureCameraPreview.surfaceProvider)
+                }
+
+            imageCapture = ImageCapture.Builder().build()
+
+            val imageAnalyzer = ImageAnalysis.Builder()
+                .setResolutionSelector(
+                    ResolutionSelector.Builder()
+                        .setAspectRatioStrategy(AspectRatioStrategy.RATIO_4_3_FALLBACK_AUTO_STRATEGY)
+                        .setAspectRatioStrategy(AspectRatioStrategy.RATIO_4_3_FALLBACK_AUTO_STRATEGY)
+                        .build()
+                )
+                .setTargetRotation(binding.takePictureCameraPreview.display.rotation)
+                .setBackpressureStrategy(ImageAnalysis.STRATEGY_KEEP_ONLY_LATEST)
+                .setOutputImageFormat(ImageAnalysis.OUTPUT_IMAGE_FORMAT_RGBA_8888)
+                .build()
+                .also {
+                    it.setAnalyzer(
+                        cameraExecutor ?: return@also
+                    ) { image ->
+                        Log.d("Take Picture", "Average luminosity: $image")
+                    }
+                }
+
+            imageAnalyzer.setAnalyzer(cameraExecutor ?: return@addListener) { image ->
+                if (bitmapBuffer == null) {
+                    imageRotationDegrees = image.imageInfo.rotationDegrees
+                    bitmapBuffer = Bitmap.createBitmap(
+                        image.width, image.height, Bitmap.Config.ARGB_8888
+                    )
+                    if (pauseAnalysis) {
+                        image.close()
+                        return@setAnalyzer
+                    }
+                    image.use { bitmapBuffer?.copyPixelsFromBuffer(image.planes[0].buffer) }
+                }
+            }
+
+            // Select back camera as a default
+            val cameraSelector = CameraSelector.DEFAULT_BACK_CAMERA
+            try {
+                // Unbind use cases before rebinding
+                cameraProvider.unbindAll()
+
+                // Bind use cases to camera
+                cameraProvider.bindToLifecycle(
+                    this, cameraSelector, preview, imageCapture, imageAnalyzer
+                )
+            } catch (exc: Exception) {
+                Log.e("Take Picture", "Use case binding failed", exc)
+            }
+        }, ContextCompat.getMainExecutor(requireContext()))
+    }
+
+    private fun saveCapturedPhoto() {
+
+        // Create time stamped name and MediaStore entry.
+        val name = SimpleDateFormat(FILENAME_FORMAT, Locale.US)
+            .format(System.currentTimeMillis())
+        val contentValues = ContentValues().apply {
+            put(MediaStore.MediaColumns.DISPLAY_NAME, name)
+            put(MediaStore.MediaColumns.MIME_TYPE, "image/jpeg")
+            if (Build.VERSION.SDK_INT > Build.VERSION_CODES.P) {
+                put(MediaStore.Images.Media.RELATIVE_PATH, "Pictures/CameraX-Image")
+            }
+        }
+
+        // Create output options object which contains file + metadata
+        val outputOptions = ImageCapture.OutputFileOptions
+            .Builder(
+                activity?.contentResolver ?: return,
+                MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
+                contentValues
+            )
+            .build()
+
+        // Set up image capture listener, which is triggered after photo has
+        // been taken
+        imageCapture?.takePicture(
+            outputOptions,
+            ContextCompat.getMainExecutor(requireContext()),
+            object : ImageCapture.OnImageSavedCallback {
+                override fun onError(exc: ImageCaptureException) {
+                    Log.e("Take Picture", "Photo capture failed: ${exc.message}", exc)
+                }
+
+                override fun onImageSaved(output: ImageCapture.OutputFileResults) {
+                    binding.takePictureButton.setShowProgress(false, null)
+                }
+            }
+        )
+    }
+
     override fun setListeners() {
         binding.apply {
-            takePictureToolbar.setNavigationOnClickListener {
+            takePictureBackStack.setNavigationOnClickListener {
                 findNavController().popBackStack()
             }
 
+            takePictureToolbarClosePreview.setNavigationOnClickListener {
+                onOutsidePreview()
+            }
+
             takePictureHelp.setOnClickListener {
-                HelpTakePictureDialog.newInstance().show(childFragmentManager, "HelpTakePictureDialog")
+                HelpTakePictureDialog.newInstance()
+                    .show(childFragmentManager, "HelpTakePictureDialog")
             }
 
             takePictureGallery.setOnClickListener {
                 shouldShowRequestPermission()
             }
+
+            takePictureButton.setOnClickListener {
+                takePhoto()
+            }
+        }
+    }
+
+    private fun takePhoto() {
+        binding.takePictureButton.apply {
+            setShowProgress(true, null)
+            if(bitmapBuffer != null){
+                saveCapturedPhoto()
+                isEnabled = false
+                if (!pauseAnalysis) {
+                    pauseAnalysis = true
+                    onCreatePreview()
+                }
+                isEnabled = true
+            }
+        }
+    }
+
+    private fun onOutsidePreview() {
+        pauseAnalysis = false
+        initializeCamera()
+        with(binding) {
+            takePictureImagePreview.setImageBitmap(null)
+            takePictureButton.removeProgress()
+            takePictureToolbarClosePreview.setGone()
+            takePictureBackStack.setVisible()
+            takePictureGallery.setVisible()
+            takePictureIndicator.setVisible()
+            takePictureHelp.setVisible()
+            takePictureCameraPreview.setVisible()
+        }
+    }
+
+    private fun onCreatePreview() {
+        val matrix = Matrix().apply {
+            postRotate(imageRotationDegrees.toFloat())
+        }
+        val uprightImage = Bitmap.createBitmap(
+            bitmapBuffer ?: return, 0, 0, bitmapBuffer?.width ?: return, bitmapBuffer?.height ?: return, matrix, true
+        )
+        with(binding) {
+            takePictureImagePreview.setImageBitmap(uprightImage)
+            takePictureToolbarClosePreview.setVisible()
+            takePictureBackStack.setGone()
+            takePictureIndicator.setGone()
+            takePictureGallery.setGone()
+            takePictureHelp.setGone()
+            takePictureCameraPreview.setGone()
         }
     }
 
     private fun shouldShowRequestPermission() {
-        if (ContextCompat.checkSelfPermission(requireContext(), android.Manifest.permission.READ_MEDIA_IMAGES) == PackageManager.PERMISSION_DENIED) {
+        if (ContextCompat.checkSelfPermission(
+                requireContext(),
+                android.Manifest.permission.READ_MEDIA_IMAGES
+            ) == PackageManager.PERMISSION_DENIED
+        ) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
                 requestImagePermission.launch(
                     android.Manifest.permission.READ_MEDIA_IMAGES
@@ -69,5 +282,13 @@ class TakePictureFragment : BaseFragment<FragmentTakePictureBinding>() {
 
     private fun goToGallery() {
         choiceImageFromGallery.launch("image/*")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        cameraExecutor?.apply {
+            shutdown()
+            awaitTermination(1000, TimeUnit.MILLISECONDS)
+        }
     }
 }
