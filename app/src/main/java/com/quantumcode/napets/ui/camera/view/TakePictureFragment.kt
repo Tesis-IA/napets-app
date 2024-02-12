@@ -30,6 +30,7 @@ import com.quantumcode.napets.ui.base.BaseFragment
 import com.quantumcode.napets.ui.main.view.MainActivity
 import com.quantumcode.napets.ui.utils.removeProgress
 import com.quantumcode.napets.ui.utils.setGone
+import com.quantumcode.napets.ui.utils.setInvisible
 import com.quantumcode.napets.ui.utils.setShowProgress
 import com.quantumcode.napets.ui.utils.setVisible
 import java.text.SimpleDateFormat
@@ -165,7 +166,11 @@ class TakePictureFragment : BaseFragment<FragmentTakePictureBinding>() {
                 }
 
                 override fun onImageSaved(output: ImageCapture.OutputFileResults) {
-                    binding.takePictureButton.setShowProgress(false, null)
+                    binding.apply {
+                        takePictureButton.setShowProgress(false, null)
+                        takePictureButton.setInvisible()
+                        takePictureSendPhotoButton.setVisible()
+                    }
                 }
             }
         )
@@ -193,6 +198,10 @@ class TakePictureFragment : BaseFragment<FragmentTakePictureBinding>() {
             takePictureButton.setOnClickListener {
                 takePhoto()
             }
+
+            takePictureSendPhotoButton.setOnClickListener {
+
+            }
         }
     }
 
@@ -216,6 +225,8 @@ class TakePictureFragment : BaseFragment<FragmentTakePictureBinding>() {
         initializeCamera()
         with(binding) {
             takePictureImagePreview.setImageBitmap(null)
+            takePictureButton.setVisible()
+            takePictureSendPhotoButton.setGone()
             takePictureButton.removeProgress()
             takePictureToolbarClosePreview.setGone()
             takePictureBackStack.setVisible()
@@ -233,8 +244,12 @@ class TakePictureFragment : BaseFragment<FragmentTakePictureBinding>() {
         val uprightImage = Bitmap.createBitmap(
             bitmapBuffer ?: return, 0, 0, bitmapBuffer?.width ?: return, bitmapBuffer?.height ?: return, matrix, true
         )
+        binding.takePictureImagePreview.setImageBitmap(uprightImage)
+        hideViewInPreview()
+    }
+
+    private fun hideViewInPreview() {
         with(binding) {
-            takePictureImagePreview.setImageBitmap(uprightImage)
             takePictureToolbarClosePreview.setVisible()
             takePictureBackStack.setGone()
             takePictureIndicator.setGone()
@@ -267,7 +282,15 @@ class TakePictureFragment : BaseFragment<FragmentTakePictureBinding>() {
     private val choiceImageFromGallery = registerForActivityResult(
         ActivityResultContracts.GetContent()
     ) {
-
+        if (it != null) {
+            binding.takePictureImagePreview.setImageURI(it)
+            binding.apply {
+                takePictureButton.setShowProgress(false, null)
+                takePictureButton.setInvisible()
+                takePictureSendPhotoButton.setVisible()
+            }
+            hideViewInPreview()
+        }
     }
 
     private val requestImagePermission = registerForActivityResult(

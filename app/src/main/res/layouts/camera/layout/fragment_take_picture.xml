@@ -122,6 +122,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/take_picture_send_photo_button"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:gravity="center"
+        app:iconPadding="0dp"
+        android:visibility="gone"
+        app:backgroundTint="@null"
+        android:layout_marginBottom="20dp"
+        app:iconGravity="textStart"
+        app:icon="@drawable/ic_round_check_circle"
+        android:background="@drawable/ic_shutter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/take_picture_gallery"
         android:layout_width="30dp"
