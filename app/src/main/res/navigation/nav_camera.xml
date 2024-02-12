@@ -9,5 +9,14 @@
         android:id="@+id/homeCameraFragment"
         android:name="com.quantumcode.napets.ui.camera.view.HomeCameraFragment"
         android:label="fragment_home_camera"
-        tools:layout="@layout/fragment_home_camera" />
+        tools:layout="@layout/fragment_home_camera" >
+        <action
+            android:id="@+id/action_homeCameraFragment_to_takePictureFragment"
+            app:destination="@id/takePictureFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/takePictureFragment"
+        android:name="com.quantumcode.napets.ui.camera.view.TakePictureFragment"
+        android:label="fragment_take_picture"
+        tools:layout="@layout/fragment_take_picture" />
 </navigation>
