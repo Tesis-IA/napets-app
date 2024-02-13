@@ -1,18 +1,17 @@
 package com.quantumcode.napets.ui.login.view
 
-import android.annotation.SuppressLint
-import android.os.Bundle
-import android.provider.Settings
 import android.view.View
 import androidx.core.widget.doOnTextChanged
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.snackbar.Snackbar
+import com.quantumcode.napets.data.utils.validatePassword
 import com.quantumcode.napets.databinding.FragmentLoginBinding
 import com.quantumcode.napets.ui.base.BaseFragment
 import com.quantumcode.napets.ui.login.viewmodel.LoginViewModel
-import com.google.android.material.snackbar.Snackbar
-import com.quantumcode.napets.data.utils.validatePassword
 import com.quantumcode.napets.ui.main.view.MainActivity
+import com.quantumcode.napets.ui.main.viewmodel.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -21,6 +20,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
     override var isBottomNavVisible = View.GONE
 
     private val viewModel: LoginViewModel by viewModels()
+    private val mainViewModel: MainViewModel by activityViewModels()
 
     override fun getViewBinding() = FragmentLoginBinding.inflate(layoutInflater)
 
@@ -44,7 +44,6 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
         }
     }
 
-    @SuppressLint("HardwareIds")
     override fun setListeners() {
         binding.loginButtonSignIn.setOnClickListener {
             viewModel.validateCredentials(
@@ -64,8 +63,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
         }
 
         binding.continueAsGuest.setOnClickListener {
-            val deviceId = Settings.Secure.getString(activity?.contentResolver, Settings.Secure.ANDROID_ID)
-            viewModel.continueAsGuest(deviceId)
+            viewModel.continueAsGuest(mainViewModel.getDeviceId())
         }
     }
 

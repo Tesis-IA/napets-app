@@ -1,21 +1,18 @@
 package com.quantumcode.napets.ui.camera.view
 
 import android.content.ContentValues
-import android.content.pm.ActivityInfo
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.Matrix
 import android.os.Build
 import android.os.Bundle
+import android.os.Environment
 import android.provider.MediaStore
-import android.transition.Visibility
 import android.util.Log
-import android.view.Surface
 import android.view.View
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.camera.core.CameraSelector
-import androidx.camera.core.CameraX
 import androidx.camera.core.ImageAnalysis
 import androidx.camera.core.ImageCapture
 import androidx.camera.core.ImageCaptureException
@@ -24,26 +21,30 @@ import androidx.camera.core.resolutionselector.AspectRatioStrategy
 import androidx.camera.core.resolutionselector.ResolutionSelector
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.quantumcode.napets.databinding.FragmentTakePictureBinding
 import com.quantumcode.napets.ui.base.BaseFragment
-import com.quantumcode.napets.ui.main.view.MainActivity
+import com.quantumcode.napets.ui.camera.viewmodel.CameraViewModel
+import com.quantumcode.napets.ui.main.viewmodel.MainViewModel
 import com.quantumcode.napets.ui.utils.removeProgress
 import com.quantumcode.napets.ui.utils.setGone
 import com.quantumcode.napets.ui.utils.setInvisible
 import com.quantumcode.napets.ui.utils.setShowProgress
 import com.quantumcode.napets.ui.utils.setVisible
-import java.text.SimpleDateFormat
-import java.util.Locale
+import dagger.hilt.android.AndroidEntryPoint
+import java.io.File
+import java.util.Calendar
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 import java.util.concurrent.TimeUnit
 
+@AndroidEntryPoint
 class TakePictureFragment : BaseFragment<FragmentTakePictureBinding>() {
 
-    companion object {
-        private const val FILENAME_FORMAT = "dd/MM/yyy/"
-    }
+    private val viewModel: CameraViewModel by viewModels()
+    private val mainViewModel: MainViewModel by activityViewModels()
 
     override var isBottomNavVisible = View.GONE
     private var imageCapture: ImageCapture? = null
@@ -51,6 +52,7 @@ class TakePictureFragment : BaseFragment<FragmentTakePictureBinding>() {
     private var bitmapBuffer: Bitmap? = null
     private var imageRotationDegrees = 0
     private var pauseAnalysis = false
+    private var nameImageCapture = ""
 
     override fun getViewBinding() = FragmentTakePictureBinding.inflate(layoutInflater)
 
@@ -136,10 +138,9 @@ class TakePictureFragment : BaseFragment<FragmentTakePictureBinding>() {
     private fun saveCapturedPhoto() {
 
         // Create time stamped name and MediaStore entry.
-        val name = SimpleDateFormat(FILENAME_FORMAT, Locale.US)
-            .format(System.currentTimeMillis())
+        nameImageCapture = "${Calendar.DAY_OF_WEEK_IN_MONTH}${Calendar.MONTH}${Calendar.YEAR}${Calendar.HOUR}${Calendar.SECOND}${Calendar.MILLISECOND}"
         val contentValues = ContentValues().apply {
-            put(MediaStore.MediaColumns.DISPLAY_NAME, name)
+            put(MediaStore.MediaColumns.DISPLAY_NAME, nameImageCapture)
             put(MediaStore.MediaColumns.MIME_TYPE, "image/jpeg")
             if (Build.VERSION.SDK_INT > Build.VERSION_CODES.P) {
                 put(MediaStore.Images.Media.RELATIVE_PATH, "Pictures/CameraX-Image")
@@ -176,6 +177,19 @@ class TakePictureFragment : BaseFragment<FragmentTakePictureBinding>() {
         )
     }
 
+    private fun makePrediction() {
+        val path = "${Environment.getExternalStorageDirectory().absolutePath}/Pictures/CameraX-Image/${nameImageCapture}.jpg"
+        val file = File(path)
+        if (file.exists()) {
+            viewModel.makePrediction(
+                mainViewModel.getDeviceId(),
+                file
+            )
+        } else {
+            Toast.makeText(requireContext(), "File not found", Toast.LENGTH_SHORT).show()
+        }
+    }
+
     override fun setListeners() {
         binding.apply {
             takePictureBackStack.setNavigationOnClickListener {
@@ -200,8 +214,18 @@ class TakePictureFragment : BaseFragment<FragmentTakePictureBinding>() {
             }
 
             takePictureSendPhotoButton.setOnClickListener {
-
+                makePrediction()
             }
+        }
+    }
+
+    override fun setObservers() {
+        viewModel.errorResponse.observe(viewLifecycleOwner) { message ->
+            Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+        }
+
+        viewModel.prediction.observe(viewLifecycleOwner) { response ->
+            Log.d("Take Picture", response.toString())
         }
     }
 
