@@ -11,7 +11,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class SigInViewModel @Inject constructor(
+class SignUpViewModel @Inject constructor(
     private val authenticationRepository: IAuthenticationRepository
 ): BaseViewModel() {
 
@@ -25,12 +25,13 @@ class SigInViewModel @Inject constructor(
     private val _errorResponse = MutableLiveData<String>()
     val errorResponse get() = _errorResponse
 
-    private fun registerUSer(username: String, email: String, password: String){
+    private fun registerUSer(username: String, email: String, password: String, deviceId: String){
         viewModelScope.launch {
             val isSuccess = authenticationRepository.createAccount(
                 username = username,
                 email = email,
                 password = password,
+                deviceId = deviceId,
                 handleErrorSignup = ::handleErrorUser
             )
             _isAuthenticated.postValue(isSuccess)
@@ -41,7 +42,7 @@ class SigInViewModel @Inject constructor(
         _errorResponse.postValue(message)
     }
 
-    fun validateCredentials(usernameToValidate: String, emailToValidate: String, passwordToValidate: String) {
+    fun validateCredentials(usernameToValidate: String, emailToValidate: String, passwordToValidate: String, deviceId: String) {
         when {
             !emailToValidate.validateEmail() && !passwordToValidate.validatePassword() && usernameToValidate.isEmpty() -> {
                 password.postValue("La contraseña debe tener un mínimo de 8 caracteres")
@@ -61,7 +62,7 @@ class SigInViewModel @Inject constructor(
                 password.postValue("")
                 email.postValue("")
                 username.postValue("")
-                registerUSer(usernameToValidate, emailToValidate, passwordToValidate)
+                registerUSer(usernameToValidate, emailToValidate, passwordToValidate, deviceId)
             }
         }
     }

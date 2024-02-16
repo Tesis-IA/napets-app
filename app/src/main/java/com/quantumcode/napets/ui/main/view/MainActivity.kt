@@ -1,6 +1,8 @@
 package com.quantumcode.napets.ui.main.view
 
+import android.annotation.SuppressLint
 import android.os.Bundle
+import android.provider.Settings
 import androidx.activity.viewModels
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.drawerlayout.widget.DrawerLayout
@@ -31,7 +33,14 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         setupDrawerLayout()
         setObservers()
         setListeners()
+        setDeviceId()
         viewModel.isAuthored()
+    }
+
+    @SuppressLint("HardwareIds")
+    private fun setDeviceId() {
+        val deviceId = Settings.Secure.getString(contentResolver, Settings.Secure.ANDROID_ID)
+        viewModel.setDeviceId(deviceId)
     }
 
     private fun setListeners() {

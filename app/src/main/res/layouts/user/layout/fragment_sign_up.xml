@@ -5,7 +5,7 @@
 
         <variable
             name="viewModel"
-            type="com.quantumcode.napets.ui.signup.viewmodel.SigInViewModel" />
+            type="com.quantumcode.napets.ui.signup.viewmodel.SignUpViewModel" />
     </data>
 
     <carbon.widget.LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"

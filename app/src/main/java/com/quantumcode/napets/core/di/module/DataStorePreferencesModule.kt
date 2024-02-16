@@ -1,7 +1,14 @@
 package com.quantumcode.napets.core.di.module
 
 import android.content.Context
+import androidx.datastore.core.DataStore
+import androidx.datastore.core.handlers.ReplaceFileCorruptionHandler
+import androidx.datastore.preferences.core.PreferenceDataStoreFactory
+import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.core.emptyPreferences
+import androidx.datastore.preferences.preferencesDataStoreFile
 import com.quantumcode.napets.core.di.manager.DataStoreManager
+import com.quantumcode.napets.data.utils.Constant
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -11,8 +18,17 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-class DataStorePreferencesModule {
+object DataStorePreferencesModule {
     @Provides
     @Singleton
-    fun provideDataStorePreferences(@ApplicationContext context: Context): DataStoreManager = DataStoreManager(context)
+    fun providePreferenceDataStoreFactory(@ApplicationContext context: Context) = PreferenceDataStoreFactory.create(
+        corruptionHandler = ReplaceFileCorruptionHandler(
+            produceNewData = { emptyPreferences() }
+        ),
+        produceFile = { context.preferencesDataStoreFile(Constant.DATASTORE_PREFERENCE_NAME) }
+    )
+
+    @Singleton
+    @Provides
+    fun provideDataStoreManager(dataStore: DataStore<Preferences>) = DataStoreManager(dataStore)
 }

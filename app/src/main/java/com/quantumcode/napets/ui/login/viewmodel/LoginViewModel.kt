@@ -23,11 +23,12 @@ class LoginViewModel @Inject constructor(
     private val _errorResponse = MutableLiveData<String>()
     val errorResponse get() = _errorResponse
 
-    private fun login(username: String, password: String) {
+    private fun login(username: String, password: String, deviceId: String) {
         viewModelScope.launch {
             val isSuccess = authenticationRepository.userLogin(
-                username = username,
+                email = username,
                 password = password,
+                deviceId = deviceId,
                 handleErrorLogin = ::handleErrorUser
             )
             _isAuthenticated.postValue(isSuccess)
@@ -49,7 +50,11 @@ class LoginViewModel @Inject constructor(
         _errorResponse.postValue(message)
     }
 
-    fun validateCredentials(usernameToValidate: String, passwordToValidate: String) {
+    fun validateCredentials(
+        usernameToValidate: String,
+        passwordToValidate: String,
+        deviceId: String
+    ) {
         when {
             usernameToValidate.isEmpty() && !passwordToValidate.validatePassword() -> {
                 password.postValue("La contraseña debe tener un mínimo de 8 caracteres")
@@ -64,7 +69,7 @@ class LoginViewModel @Inject constructor(
             else -> {
                 password.postValue("")
                 username.postValue("")
-                login(usernameToValidate, passwordToValidate)
+                login(usernameToValidate, passwordToValidate, deviceId)
             }
         }
     }

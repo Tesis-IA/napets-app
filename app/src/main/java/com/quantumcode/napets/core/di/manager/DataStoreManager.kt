@@ -1,37 +1,29 @@
 package com.quantumcode.napets.core.di.manager
 
-import android.content.Context
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.emptyPreferences
-import androidx.datastore.preferences.preferencesDataStore
-import com.quantumcode.napets.data.utils.Constant
 import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
 import java.io.IOException
 import javax.inject.Inject
 
-private val Context.dataStore by preferencesDataStore(Constant.DATASTORE_PREFERENCE_NAME)
-
-class DataStoreManager @Inject constructor(context: Context) {
-
-    private val dataStore = context.dataStore
+class DataStoreManager @Inject constructor(
+    private val dataStore: DataStore<Preferences>
+) {
 
     private suspend fun <T> DataStore<Preferences>.getFromLocalStorage(
-        preferenceKey: Preferences.Key<T>, func: T.() -> Unit
-    ) {
-        data.catch {
-            if (it is IOException) {
-                emit(emptyPreferences())
-            } else {
-                throw it
-            }
-        }.map {
-            it[preferenceKey]
-        }.collect {
-            it?.let { func.invoke(it as T) }
+        preferenceKey: Preferences.Key<T>
+    ) = data.catch {
+        if (it is IOException) {
+            emit(emptyPreferences())
+        } else {
+            throw it
         }
+    }.map {
+        it[preferenceKey]
     }
 
     suspend fun <T> storeValue(key: Preferences.Key<T>, value: T) {
@@ -41,8 +33,7 @@ class DataStoreManager @Inject constructor(context: Context) {
     }
 
     suspend fun <T> readValue(key: Preferences.Key<T>, responseFunc: T.() -> Unit) {
-        dataStore.getFromLocalStorage(key) {
-            responseFunc.invoke(this)
-        }
+        val value = dataStore.getFromLocalStorage(key)
+        value.first()?.let { responseFunc.invoke(it) }
     }
 }

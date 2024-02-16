@@ -1,6 +1,5 @@
 package com.quantumcode.napets.ui.signup.view
 
-import android.os.Bundle
 import android.view.View
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.activityViewModels
@@ -14,13 +13,13 @@ import com.quantumcode.napets.databinding.FragmentSignUpBinding
 import com.quantumcode.napets.ui.base.BaseFragment
 import com.quantumcode.napets.ui.main.view.MainActivity
 import com.quantumcode.napets.ui.main.viewmodel.MainViewModel
-import com.quantumcode.napets.ui.signup.viewmodel.SigInViewModel
+import com.quantumcode.napets.ui.signup.viewmodel.SignUpViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class SignUpFragment : BaseFragment<FragmentSignUpBinding>() {
 
-    private val viewModel: SigInViewModel by viewModels()
+    private val viewModel: SignUpViewModel by viewModels()
     private val mainViewModel: MainViewModel by activityViewModels()
 
     override var isBottomNavVisible = View.GONE
@@ -30,7 +29,7 @@ class SignUpFragment : BaseFragment<FragmentSignUpBinding>() {
     override fun setObservers() {
         viewModel.isAuthenticated.observe(viewLifecycleOwner) {
             if(it) {
-                (activity as MainActivity).navigateToHome()
+                findNavController().navigate(SignUpFragmentDirections.actionSignUpFragmentToLoginFragment())
             }
         }
 
@@ -60,7 +59,8 @@ class SignUpFragment : BaseFragment<FragmentSignUpBinding>() {
             viewModel.validateCredentials(
                 binding.signUpUsername.text.toString(),
                 binding.signUpEmail.text.toString(),
-                binding.signUpPassword.text.toString()
+                binding.signUpPassword.text.toString(),
+                mainViewModel.getDeviceId()
             )
         }
 
