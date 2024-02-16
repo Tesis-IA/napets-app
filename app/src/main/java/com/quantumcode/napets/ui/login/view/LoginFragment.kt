@@ -48,7 +48,8 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
         binding.loginButtonSignIn.setOnClickListener {
             viewModel.validateCredentials(
                 binding.loginTextUsername.text.toString(),
-                binding.loginTextPassword.text.toString()
+                binding.loginTextPassword.text.toString(),
+                mainViewModel.getDeviceId()
             )
         }
 

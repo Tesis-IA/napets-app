@@ -6,7 +6,6 @@ import com.quantumcode.napets.core.di.manager.DataStoreManager
 import com.quantumcode.napets.data.domainmodel.user.GuestRequest
 import com.quantumcode.napets.data.domainmodel.user.UserLoginRequest
 import com.quantumcode.napets.data.domainmodel.user.UserRequest
-import com.quantumcode.napets.data.domainmodel.user.UserResponse
 import com.quantumcode.napets.data.model.auth.UserData
 import com.quantumcode.napets.data.utils.PreferencesKeys
 import javax.inject.Inject
@@ -17,14 +16,16 @@ class AuthenticationRepositoryImp @Inject constructor(
 ) : IAuthenticationRepository {
 
     override suspend fun userLogin(
-        username: String,
+        email: String,
         password: String,
+        deviceId: String,
         handleErrorLogin: (String) -> Unit
     ): Boolean {
         val response = apiService.login(
             UserLoginRequest(
-                username = username,
-                password = password
+                email = email,
+                password = password,
+                deviceId = deviceId
             )
         )
         val isSuccessfully = when (response) {
@@ -52,6 +53,7 @@ class AuthenticationRepositoryImp @Inject constructor(
         password: String,
         email: String,
         username: String,
+        deviceId: String,
         handleErrorSignup: (String) -> Unit
     ): Boolean {
         val response = apiService.createAccount(
@@ -59,7 +61,8 @@ class AuthenticationRepositoryImp @Inject constructor(
                 email = email,
                 password = password,
                 authStrategy = password,
-                username = username
+                username = username,
+                deviceId = deviceId
             )
         )
 
