@@ -1,4 +1,4 @@
-package com.quantumcode.napets.ui.extension
+package com.quantumcode.napets.ui.utils
 
 import android.content.Intent
 import android.util.SparseArray

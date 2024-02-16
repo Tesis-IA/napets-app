@@ -6,14 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.quantumcode.napets.BuildConfig
 import com.quantumcode.napets.R
 import com.quantumcode.napets.data.model.home.Subject
 import com.quantumcode.napets.databinding.ItemLayoutSubjectBinding
 
-class HomeSubjectsAdapter : RecyclerView.Adapter<HomeSubjectsAdapter.HomeSubjectViewHolder>(){
+class HomeSubjectsAdapter(
+    private val homeSubjectAdapterListener: HomeSubjectAdapterListener
+) : RecyclerView.Adapter<HomeSubjectsAdapter.HomeSubjectViewHolder>(){
 
     private val subjectList: MutableList<Subject> = mutableListOf()
 
@@ -44,6 +43,10 @@ class HomeSubjectsAdapter : RecyclerView.Adapter<HomeSubjectsAdapter.HomeSubject
                 itemSubjectTitle.text = subject.title
                 itemSubjectImage.setImageResource(subject.image)
                 itemSubjectImage.setColorFilter(ContextCompat.getColor(root.context, R.color.primary_color))
+            }
+
+            binding.root.setOnClickListener {
+                homeSubjectAdapterListener.onSelectedItem(subject)
             }
         }
     }

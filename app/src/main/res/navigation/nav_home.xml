@@ -9,6 +9,31 @@
         android:id="@+id/homeFragment"
         tools:layout="@layout/fragment_home"
         android:name="com.quantumcode.napets.ui.home.view.HomeFragment"
-        android:label="HomeFragment" />
+        android:label="HomeFragment" >
+        <action
+            android:id="@+id/action_homeFragment_to_pestDiseaseFragment"
+            app:destination="@id/pestDiseaseFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_cropsTipsFragment"
+            app:destination="@id/cropsTipsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_historyFragment"
+            app:destination="@id/historyFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/historyFragment"
+        android:name="com.quantumcode.napets.ui.history.view.HistoryFragment"
+        android:label="fragment_history"
+        tools:layout="@layout/fragment_history" />
+    <fragment
+        android:id="@+id/cropsTipsFragment"
+        android:name="com.quantumcode.napets.ui.cropsTips.view.CropsTipsFragment"
+        android:label="fragment_crops_tips"
+        tools:layout="@layout/fragment_crops_tips" />
+    <fragment
+        android:id="@+id/pestDiseaseFragment"
+        android:name="com.quantumcode.napets.ui.pestDisease.view.PestDiseaseFragment"
+        android:label="fragment_pest_disease_fragment"
+        tools:layout="@layout/fragment_pest_disease_fragment" />
 
 </navigation>

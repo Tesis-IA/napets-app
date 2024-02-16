@@ -7,8 +7,10 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
+import androidx.navigation.Navigation
+import androidx.navigation.fragment.NavHostFragment
 import com.quantumcode.napets.R
-import com.quantumcode.napets.ui.extension.setupWithNavController
+import com.quantumcode.napets.ui.utils.setupWithNavController
 import com.quantumcode.napets.ui.base.BaseActivity
 import com.quantumcode.napets.databinding.ActivityMainBinding
 import com.quantumcode.napets.ui.main.viewmodel.MainViewModel
@@ -86,11 +88,17 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     }
 
     private fun navigateToLogin(){
-        currentNavController?.setGraph(R.navigation.nav_login)
+        val navHost = supportFragmentManager.findFragmentById(R.id.main_fragment_container) as NavHostFragment
+        val inflate = navHost.navController.navInflater
+        val graph = inflate.inflate(R.navigation.nav_login)
+        navHost.navController.graph = graph
     }
 
     fun navigateToHome() {
-        currentNavController?.setGraph(R.navigation.nav_home)
+        val navHost = supportFragmentManager.findFragmentById(R.id.main_fragment_container) as NavHostFragment
+        val inflate = navHost.navController.navInflater
+        val graph = inflate.inflate(R.navigation.nav_home)
+        navHost.navController.graph = graph
     }
 
     fun isBottomNavVisible(visibility: Int){
@@ -108,6 +116,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     }
 
     override fun onSupportNavigateUp(): Boolean {
-        return currentNavController?.navigateUp() ?: false
+        return Navigation.findNavController(this, R.id.main_fragment_container).navigateUp() || super.onSupportNavigateUp()
     }
 }

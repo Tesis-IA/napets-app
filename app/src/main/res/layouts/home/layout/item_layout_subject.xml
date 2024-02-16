@@ -14,8 +14,6 @@
         android:layout_height="140dp"
         app:cardCornerRadius="15dp"
         app:cardElevation="4dp"
-        android:clickable="true"
-        android:focusable="true"
         app:cardBackgroundColor="@color/white"
         android:foreground="?android:attr/selectableItemBackgroundBorderless"
         app:layout_constraintEnd_toEndOf="parent"
