@@ -57,6 +57,7 @@
             android:layout_height="wrap_content"
             app:itemIconSize="20dp"
             app:labelVisibilityMode="unlabeled"
+            app:itemRippleColor="@color/color_tertiary"
             app:itemIconTint="@drawable/ic_bottom_plant"
             app:itemTextColor="@drawable/ic_bottom_plant"
             app:menu="@menu/menu_bottom_navigation"
