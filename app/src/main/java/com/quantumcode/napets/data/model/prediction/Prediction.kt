@@ -1,8 +1,14 @@
 package com.quantumcode.napets.data.model.prediction
 
+import android.os.Parcelable
 import com.quantumcode.napets.data.domainmodel.prediction.PredictionResponse
 import com.quantumcode.napets.data.domainmodel.product.ProductResponse
+import com.quantumcode.napets.data.model.product.Product
+import com.squareup.moshi.JsonClass
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
+@JsonClass(generateAdapter = true)
 data class Prediction(
     val id: Int,
     val name: String,
@@ -11,8 +17,8 @@ data class Prediction(
     val warnings: List<String>,
     val moreInfo: List<String>,
     val category: String,
-    val product: List<ProductResponse>
-) {
+    val product: List<Product>
+) : Parcelable {
     constructor(predictionResponse: PredictionResponse) : this(
         id = predictionResponse.id ?: 0,
         name = predictionResponse.name.orEmpty(),
@@ -21,6 +27,6 @@ data class Prediction(
         warnings = predictionResponse.warnings.orEmpty(),
         moreInfo = predictionResponse.moreInfo.orEmpty(),
         category = predictionResponse.category.orEmpty(),
-        product = predictionResponse.product.orEmpty()
+        product = predictionResponse.product?.map { Product(it) }.orEmpty()
     )
 }

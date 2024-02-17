@@ -1,0 +1,575 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<issues format="6" by="lint 8.2.2" type="baseline" client="gradle" dependencies="false" name="AGP (8.2.2)" variant="all" version="8.2.2">
+
+    <issue
+        id="UnusedAttribute"
+        message="Attribute `enableOnBackInvokedCallback` is only used in API level 33 and higher (current min is 31)"
+        errorLine1="            android:enableOnBackInvokedCallback=&quot;true&quot;"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="28"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="This folder configuration (`v24`) is unnecessary; `minSdkVersion` is 28. Merge all the resources in this folder into `drawable`.">
+        <location
+            file="src/main/res/drawable-v24"/>
+    </issue>
+
+    <issue
+        id="ObsoleteSdkInt"
+        message="This folder configuration (`v26`) is unnecessary; `minSdkVersion` is 28. Merge all the resources in this folder into `mipmap-anydpi`.">
+        <location
+            file="src/main/res/mipmap-anydpi-v26"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (995 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector."
+        errorLine1="      android:pathData=&quot;M478,720Q499,720 513.5,705.5Q528,691 528,670Q528,649 513.5,634.5Q499,620 478,620Q457,620 442.5,634.5Q428,649 428,670Q428,691 442.5,705.5Q457,720 478,720ZM442,566L516,566Q516,533 523.5,514Q531,495 566,462Q592,436 607,412.5Q622,389 622,356Q622,300 581,270Q540,240 484,240Q427,240 391.5,270Q356,300 342,342L408,368Q413,350 430.5,329Q448,308 484,308Q516,308 532,325.5Q548,343 548,364Q548,384 536,401.5Q524,419 506,434Q462,473 452,493Q442,513 442,566ZM480,880Q397,880 324,848.5Q251,817 197,763Q143,709 111.5,636Q80,563 80,480Q80,397 111.5,324Q143,251 197,197Q251,143 324,111.5Q397,80 480,80Q563,80 636,111.5Q709,143 763,197Q817,251 848.5,324Q880,397 880,480Q880,563 848.5,636Q817,709 763,763Q709,817 636,848.5Q563,880 480,880ZM480,800Q614,800 707,707Q800,614 800,480Q800,346 707,253Q614,160 480,160Q346,160 253,253Q160,346 160,480Q160,614 253,707Q346,800 480,800ZM480,480Q480,480 480,480Q480,480 480,480Q480,480 480,480Q480,480 480,480Q480,480 480,480Q480,480 480,480Q480,480 480,480Q480,480 480,480Z&quot;/>"
+        errorLine2="                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layouts/camera/drawable/ic_help.xml"
+            line="11"
+            column="25"/>
+    </issue>
+
+    <issue
+        id="Overdraw"
+        message="Possible overdraw: Root element paints background `@color/background` with a theme that also paints a background (inferred theme is `@style/Theme.NaPets`)"
+        errorLine1="    android:background=&quot;@color/background&quot;"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/activity_main.xml"
+            line="7"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="Overdraw"
+        message="Possible overdraw: Root element paints background `@color/carbon_black_87` with a theme that also paints a background (inferred theme is `@style/Theme.NaPets`)"
+        errorLine1="    android:background=&quot;@color/carbon_black_87&quot;"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layouts/home/layout/fragment_crops_tips.xml"
+            line="6"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="Overdraw"
+        message="Possible overdraw: Root element paints background `@drawable/bg_corners_radius_dialog` with a theme that also paints a background (inferred theme is `@style/Theme.NaPets`)"
+        errorLine1="    android:background=&quot;@drawable/bg_corners_radius_dialog&quot;"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layouts/camera/layout/fragment_help_take_picture_dialog.xml"
+            line="8"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="Overdraw"
+        message="Possible overdraw: Root element paints background `@color/bg_application` with a theme that also paints a background (inferred theme is `@style/Theme.NaPets`)"
+        errorLine1="    android:background=&quot;@color/bg_application&quot;"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layouts/home/layout/fragment_history.xml"
+            line="6"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="Overdraw"
+        message="Possible overdraw: Root element paints background `@color/bg_application` with a theme that also paints a background (inferred theme is `@style/Theme.NaPets`)"
+        errorLine1="    android:background=&quot;@color/bg_application&quot;"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layouts/home/layout/fragment_pest_disease_fragment.xml"
+            line="7"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="Overdraw"
+        message="Possible overdraw: Root element paints background `@color/black` with a theme that also paints a background (inferred theme is `@style/Theme.NaPets`)"
+        errorLine1="    android:background=&quot;@color/black&quot;"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layouts/camera/layout/fragment_take_picture.xml"
+            line="6"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="Overdraw"
+        message="Possible overdraw: Root element paints background `@color/bg_application` with a theme that also paints a background (inferred theme is `@style/Theme.NaPets`)"
+        errorLine1="    android:background=&quot;@color/bg_application&quot;>"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layouts/home/layout/item_history.xml"
+            line="8"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="Overdraw"
+        message="Possible overdraw: Root element paints background `@color/background` with a theme that also paints a background (inferred theme is `@style/Theme.NaPets`)"
+        errorLine1="    android:background=&quot;@color/background&quot;"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layouts/home/layout/item_layout_subject.xml"
+            line="8"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="Overdraw"
+        message="Possible overdraw: Root element paints background `@color/bg_application` with a theme that also paints a background (inferred theme is `@style/Theme.NaPets`)"
+        errorLine1="    android:background=&quot;@color/bg_application&quot;>"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layouts/home/layout/item_pest_disease.xml"
+            line="8"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.raw.animation_loading_plant` appears to be unused">
+        <location
+            file="src/main/res/raw/animation_loading_plant.json"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.drawable.bg_rounded_dialog` appears to be unused"
+        errorLine1="&lt;shape xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;"
+        errorLine2="^">
+        <location
+            file="src/main/res/drawable/bg_rounded_dialog.xml"
+            line="2"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.color_tertiary_variant` appears to be unused"
+        errorLine1="    &lt;color name=&quot;color_tertiary_variant&quot;>#5C941A&lt;/color>"
+        errorLine2="           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="8"
+            column="12"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.warning` appears to be unused"
+        errorLine1="    &lt;color name=&quot;warning&quot;>#FFC400&lt;/color>"
+        errorLine2="           ~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="10"
+            column="12"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.bg_loading` appears to be unused"
+        errorLine1="    &lt;color name=&quot;bg_loading&quot;>#80000000&lt;/color>"
+        errorLine2="           ~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="12"
+            column="12"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.drawable.ic_background_login` appears to be unused">
+        <location
+            file="src/main/res/layouts/user/drawable/ic_background_login.png"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.drawable.ic_search` appears to be unused">
+        <location
+            file="src/main/res/layouts/home/drawable/ic_search.png"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.layout.layout_loading_full_screen` appears to be unused"
+        errorLine1="&lt;layout>"
+        errorLine2="^">
+        <location
+            file="src/main/res/layout/layout_loading_full_screen.xml"
+            line="2"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.comunidad` appears to be unused"
+        errorLine1="    &lt;string name=&quot;comunidad&quot;>Comunidad&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="7"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.recordarme` appears to be unused"
+        errorLine1="    &lt;string name=&quot;recordarme&quot;>Recordarme&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="15"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.olvidaste_tu_contrase_a` appears to be unused"
+        errorLine1="    &lt;string name=&quot;olvidaste_tu_contrase_a&quot;>He olvidado mi contraseña&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="16"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.reg_strate` appears to be unused"
+        errorLine1="    &lt;string name=&quot;reg_strate&quot;>Regístrate&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="23"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.confirmar_contrase_a` appears to be unused"
+        errorLine1="    &lt;string name=&quot;confirmar_contrase_a&quot;>Confirmar contraseña&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="26"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.buscar_en_napets` appears to be unused"
+        errorLine1="    &lt;string name=&quot;buscar_en_napets&quot;>Buscar en NaPets&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="32"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.plagas_y_enfermedades` appears to be unused"
+        errorLine1="    &lt;string name=&quot;plagas_y_enfermedades&quot;>Plagas y \n Enfermedades&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="33"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.consejos_de_cultivos` appears to be unused"
+        errorLine1="    &lt;string name=&quot;consejos_de_cultivos&quot;>Consejos de \n cultivos&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="35"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.style.Theme_App_Starting` appears to be unused"
+        errorLine1="    &lt;style name=&quot;Theme.App.Starting&quot; parent=&quot;Theme.AppCompat.DayNight.DarkActionBar&quot;>"
+        errorLine2="           ~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/themes.xml"
+            line="19"
+            column="12"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.style.Theme_NaPets_NoActionBar` appears to be unused"
+        errorLine1="    &lt;style name=&quot;Theme.NaPets.NoActionBar&quot;>"
+        errorLine2="           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/themes.xml"
+            line="23"
+            column="12"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.style.Theme_NaPets_AppBarOverlay` appears to be unused"
+        errorLine1="    &lt;style name=&quot;Theme.NaPets.AppBarOverlay&quot; parent=&quot;ThemeOverlay.AppCompat.Dark.ActionBar&quot; />"
+        errorLine2="           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/themes.xml"
+            line="28"
+            column="12"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.style.Theme_NaPets_PopupOverlay` appears to be unused"
+        errorLine1="    &lt;style name=&quot;Theme.NaPets.PopupOverlay&quot; parent=&quot;ThemeOverlay.AppCompat.Light&quot; />"
+        errorLine2="           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/themes.xml"
+            line="30"
+            column="12"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.style.TabLayout` appears to be unused"
+        errorLine1="    &lt;style name=&quot;TabLayout&quot; parent=&quot;Widget.Material3.TabLayout&quot;>"
+        errorLine2="           ~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/themes.xml"
+            line="38"
+            column="12"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.style.TabText` appears to be unused"
+        errorLine1="    &lt;style name=&quot;TabText&quot; parent=&quot;@android:style/TextAppearance.Widget.TabWidget&quot;>"
+        errorLine2="           ~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/themes.xml"
+            line="43"
+            column="12"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.style.AppBottomSheetDialogTheme` appears to be unused"
+        errorLine1="    &lt;style name=&quot;AppBottomSheetDialogTheme&quot;"
+        errorLine2="           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/themes.xml"
+            line="48"
+            column="12"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.style.AppModalStyle` appears to be unused"
+        errorLine1="    &lt;style name=&quot;AppModalStyle&quot;"
+        errorLine2="           ~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/themes.xml"
+            line="54"
+            column="12"/>
+    </issue>
+
+    <issue
+        id="MonochromeLauncherIcon"
+        message="The application adaptive icon is missing a monochrome tag"
+        errorLine1="&lt;adaptive-icon xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;>"
+        errorLine2="^">
+        <location
+            file="src/main/res/mipmap-anydpi-v26/ic_launcher.xml"
+            line="2"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="MonochromeLauncherIcon"
+        message="The application adaptive roundIcon is missing a monochrome tag"
+        errorLine1="&lt;adaptive-icon xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;>"
+        errorLine2="^">
+        <location
+            file="src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml"
+            line="2"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="IconLocation"
+        message="Found bitmap drawable `res/drawable/ic_arrow_right.png` in densityless folder">
+        <location
+            file="src/main/res/layouts/camera/drawable/ic_arrow_right.png"/>
+    </issue>
+
+    <issue
+        id="IconLocation"
+        message="Found bitmap drawable `res/drawable/ic_background_login.png` in densityless folder">
+        <location
+            file="src/main/res/layouts/user/drawable/ic_background_login.png"/>
+    </issue>
+
+    <issue
+        id="IconLocation"
+        message="Found bitmap drawable `res/drawable/ic_camera.png` in densityless folder">
+        <location
+            file="src/main/res/drawable/ic_camera.png"/>
+    </issue>
+
+    <issue
+        id="IconLocation"
+        message="Found bitmap drawable `res/drawable/ic_camera_home.png` in densityless folder">
+        <location
+            file="src/main/res/layouts/camera/drawable/ic_camera_home.png"/>
+    </issue>
+
+    <issue
+        id="IconLocation"
+        message="Found bitmap drawable `res/drawable/ic_drawer.png` in densityless folder">
+        <location
+            file="src/main/res/drawable/ic_drawer.png"/>
+    </issue>
+
+    <issue
+        id="IconLocation"
+        message="Found bitmap drawable `res/drawable/ic_history_home.png` in densityless folder">
+        <location
+            file="src/main/res/layouts/home/drawable/ic_history_home.png"/>
+    </issue>
+
+    <issue
+        id="IconLocation"
+        message="Found bitmap drawable `res/drawable/ic_house.png` in densityless folder">
+        <location
+            file="src/main/res/drawable/ic_house.png"/>
+    </issue>
+
+    <issue
+        id="IconLocation"
+        message="Found bitmap drawable `res/drawable/ic_instruction_get_treatment.png` in densityless folder">
+        <location
+            file="src/main/res/layouts/camera/drawable/ic_instruction_get_treatment.png"/>
+    </issue>
+
+    <issue
+        id="IconLocation"
+        message="Found bitmap drawable `res/drawable/ic_instruction_see_diagnostic.png` in densityless folder">
+        <location
+            file="src/main/res/layouts/camera/drawable/ic_instruction_see_diagnostic.png"/>
+    </issue>
+
+    <issue
+        id="IconLocation"
+        message="Found bitmap drawable `res/drawable/ic_instruction_take_photo.png` in densityless folder">
+        <location
+            file="src/main/res/layouts/camera/drawable/ic_instruction_take_photo.png"/>
+    </issue>
+
+    <issue
+        id="IconLocation"
+        message="Found bitmap drawable `res/drawable/ic_login_header_right.png` in densityless folder">
+        <location
+            file="src/main/res/layouts/user/drawable/ic_login_header_right.png"/>
+    </issue>
+
+    <issue
+        id="IconLocation"
+        message="Found bitmap drawable `res/drawable/ic_my_crops.png` in densityless folder">
+        <location
+            file="src/main/res/layouts/home/drawable/ic_my_crops.png"/>
+    </issue>
+
+    <issue
+        id="IconLocation"
+        message="Found bitmap drawable `res/drawable/ic_pests.png` in densityless folder">
+        <location
+            file="src/main/res/layouts/home/drawable/ic_pests.png"/>
+    </issue>
+
+    <issue
+        id="IconLocation"
+        message="Found bitmap drawable `res/drawable/ic_search.png` in densityless folder">
+        <location
+            file="src/main/res/layouts/home/drawable/ic_search.png"/>
+    </issue>
+
+    <issue
+        id="IconLocation"
+        message="Found bitmap drawable `res/drawable/ic_square_1.png` in densityless folder">
+        <location
+            file="src/main/res/layouts/camera/drawable/ic_square_1.png"/>
+    </issue>
+
+    <issue
+        id="IconLocation"
+        message="Found bitmap drawable `res/drawable/ic_square_2.png` in densityless folder">
+        <location
+            file="src/main/res/layouts/camera/drawable/ic_square_2.png"/>
+    </issue>
+
+    <issue
+        id="IconLocation"
+        message="Found bitmap drawable `res/drawable/ic_square_3.png` in densityless folder">
+        <location
+            file="src/main/res/layouts/camera/drawable/ic_square_3.png"/>
+    </issue>
+
+    <issue
+        id="IconLocation"
+        message="Found bitmap drawable `res/drawable/ic_square_4.png` in densityless folder">
+        <location
+            file="src/main/res/layouts/camera/drawable/ic_square_4.png"/>
+    </issue>
+
+    <issue
+        id="IconLocation"
+        message="Found bitmap drawable `res/drawable/ic_tips.png` in densityless folder">
+        <location
+            file="src/main/res/layouts/home/drawable/ic_tips.png"/>
+    </issue>
+
+    <issue
+        id="IconLocation"
+        message="Found bitmap drawable `res/drawable/ic_user.png` in densityless folder">
+        <location
+            file="src/main/res/drawable/ic_user.png"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        message="Hardcoded string &quot;Podria ser el icono de NaPets&quot;, should use `@string` resource"
+        errorLine1="            android:text=&quot;Podria ser el icono de NaPets&quot;/>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/activity_main.xml"
+            line="25"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        message="Hardcoded string &quot;Home Profile&quot;, should use `@string` resource"
+        errorLine1="        android:text=&quot;Home Profile&quot;"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layouts/my_profile/layout/fragment_home_profile.xml"
+            line="12"
+            column="9"/>
+    </issue>
+
+</issues>
