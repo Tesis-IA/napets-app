@@ -3,6 +3,7 @@ package com.quantumcode.napets.core.service
 import com.quantumcode.napets.data.domainmodel.user.UserResponse
 import com.haroldadmin.cnradapter.NetworkResponse
 import com.quantumcode.napets.data.domainmodel.history.HistoryResponse
+import com.quantumcode.napets.data.domainmodel.pestDisease.PestDiseaseResponse
 import com.quantumcode.napets.data.domainmodel.prediction.PredictionResponse
 import com.quantumcode.napets.data.domainmodel.user.GuestRequest
 import com.quantumcode.napets.data.domainmodel.user.UserLoginRequest
@@ -44,4 +45,7 @@ interface ApiService {
     suspend fun getUserById(
         @Path("deviceId") deviceId: String
     ) : NetworkResponse<List<HistoryResponse>, ErrorResponse>
+
+    @GET("pest-disease")
+    suspend fun getPestDisease() : NetworkResponse<List<PestDiseaseResponse>, ErrorResponse>
 }

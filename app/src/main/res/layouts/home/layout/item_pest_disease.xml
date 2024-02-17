@@ -21,9 +21,9 @@
             android:paddingVertical="10dp">
 
             <com.google.android.material.card.MaterialCardView
-                android:id="@+id/item_history_card_image"
-                android:layout_width="80dp"
-                android:layout_height="60dp"
+                android:id="@+id/item_pest_disease_card_image"
+                android:layout_width="90dp"
+                android:layout_height="match_parent"
                 app:cardElevation="0dp"
                 app:cardBackgroundColor="@color/bg_application"
                 app:layout_constraintTop_toTopOf="parent"
@@ -39,34 +39,41 @@
 
             </com.google.android.material.card.MaterialCardView>
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/item_history_date"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                tools:text="26 Oct, 23"
-                android:layout_marginStart="8dp"
-                android:fontFamily="@font/cera_pro_medium"
-                app:layout_constraintTop_toTopOf="@id/item_history_card_image"
-                app:layout_constraintStart_toEndOf="@id/item_history_card_image"/>
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/item_history_name"
+            <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                tools:text="Anublo del arroz"
-                android:layout_marginStart="8dp"
-                android:maxLines="2"
-                android:ellipsize="end"
-                android:layout_marginTop="4dp"
-                android:textColor="@color/text_color"
-                android:fontFamily="@font/cera_pro_bold"
-                android:layout_marginEnd="8dp"
-                app:layout_constraintEnd_toStartOf="@id/item_history_arrow"
-                app:layout_constraintTop_toBottomOf="@id/item_history_date"
-                app:layout_constraintStart_toEndOf="@id/item_history_card_image"/>
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center_vertical"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/item_pest_disease_arrow"
+                app:layout_constraintStart_toEndOf="@id/item_pest_disease_card_image">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/item_pest_disease_category"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="26 Oct, 23"
+                    android:layout_marginStart="8dp"
+                    android:fontFamily="@font/cera_pro_medium" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/item_pest_disease_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:text="Anublo del arroz"
+                    android:layout_marginStart="8dp"
+                    android:maxLines="2"
+                    android:ellipsize="end"
+                    android:layout_marginTop="4dp"
+                    android:textColor="@color/text_color"
+                    android:fontFamily="@font/cera_pro_bold"
+                    android:layout_marginEnd="8dp" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
 
             <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/item_history_arrow"
+                android:id="@+id/item_pest_disease_arrow"
                 android:layout_width="16dp"
                 android:layout_height="16dp"
                 app:srcCompat="@drawable/ic_arrow_right"
