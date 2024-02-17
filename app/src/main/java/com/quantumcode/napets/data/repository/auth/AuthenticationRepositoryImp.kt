@@ -89,7 +89,7 @@ class AuthenticationRepositoryImp @Inject constructor(
 
     override suspend fun continueAsGuest(deviceId: String, handleErrorGuest: (String) -> Unit): Boolean {
         val response = apiService.continueAsGuest(
-            GuestRequest(device_id = deviceId)
+            GuestRequest(deviceId = deviceId)
         )
         val isSuccessfully = when (response) {
             is NetworkResponse.Success -> {
