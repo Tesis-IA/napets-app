@@ -1,5 +1,6 @@
 package com.quantumcode.napets.ui.base
 
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
@@ -10,6 +11,10 @@ import kotlin.coroutines.CoroutineContext
 abstract class BaseViewModel : ViewModel() {
 
     open var showLoading = false
+
+    private val _errorResponse = MutableLiveData<String>()
+    val errorResponse get() = _errorResponse
+
     fun runBlockingCoroutine(
         coroutineContext: CoroutineContext,
         runBLocking: suspend () -> Unit
@@ -22,5 +27,9 @@ abstract class BaseViewModel : ViewModel() {
                 e.message?.let { error(it) }
             }
         }
+    }
+
+    open fun handleErrorResponse(message: String) {
+        _errorResponse.postValue(message)
     }
 }

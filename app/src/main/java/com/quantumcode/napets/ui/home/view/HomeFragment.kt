@@ -8,7 +8,6 @@ import androidx.navigation.fragment.findNavController
 import com.quantumcode.napets.data.model.home.Subject
 import com.quantumcode.napets.databinding.FragmentHomeBinding
 import com.quantumcode.napets.ui.base.BaseFragment
-import com.quantumcode.napets.ui.camera.view.HomeCameraFragmentDirections
 import com.quantumcode.napets.ui.home.adapter.HomeSubjectAdapterListener
 import com.quantumcode.napets.ui.home.adapter.HomeSubjectsAdapter
 import com.quantumcode.napets.ui.home.viewmodel.HomeViewModel

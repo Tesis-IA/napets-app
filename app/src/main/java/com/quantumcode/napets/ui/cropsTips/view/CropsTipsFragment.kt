@@ -4,7 +4,9 @@ import android.os.Bundle
 import android.view.View
 import com.quantumcode.napets.databinding.FragmentCropsTipsBinding
 import com.quantumcode.napets.ui.base.BaseFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class CropsTipsFragment :  BaseFragment<FragmentCropsTipsBinding>() {
     override fun getViewBinding() = FragmentCropsTipsBinding.inflate(layoutInflater)
 

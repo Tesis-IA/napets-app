@@ -59,4 +59,7 @@
     <string name="_2_aseg_rese_de_que_la_c_mara_est_correctamente_enfocada_en_el_da_o_al_cultivo">2. Asegúrese de que la cámara esté correctamente enfocada en el daño al cultivo</string>
     <string name="_3_aseg_rese_de_que_el_cultivo_sea_claramente_visible_y_no_est_demasiado_oscuro_ni_brillante">3. Asegúrese de que el cultivo sea claramente visible y no esté demasiado oscuro ni brillante</string>
     <string name="entendido">Entendido</string>
+
+    <!-- History -->
+    <string name="aun_no_tienes_diagnosticos_para_mostrar">Aun no tienes diagnosticos para mostrar</string>
 </resources>

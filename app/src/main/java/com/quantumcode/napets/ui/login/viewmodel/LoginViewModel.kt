@@ -20,16 +20,13 @@ class LoginViewModel @Inject constructor(
     private val _isAuthenticated = MutableLiveData(false)
     val isAuthenticated get() = _isAuthenticated
 
-    private val _errorResponse = MutableLiveData<String>()
-    val errorResponse get() = _errorResponse
-
     private fun login(username: String, password: String, deviceId: String) {
         viewModelScope.launch {
             val isSuccess = authenticationRepository.userLogin(
                 email = username,
                 password = password,
                 deviceId = deviceId,
-                handleErrorLogin = ::handleErrorUser
+                handleErrorLogin = ::handleErrorResponse
             )
             _isAuthenticated.postValue(isSuccess)
         }
@@ -40,14 +37,10 @@ class LoginViewModel @Inject constructor(
         viewModelScope.launch {
             val isSuccess = authenticationRepository.continueAsGuest(
                 deviceId = deviceId,
-                handleErrorGuest = ::handleErrorUser
+                handleErrorGuest = ::handleErrorResponse
             )
             _isAuthenticated.postValue(isSuccess)
         }
-    }
-
-    private fun handleErrorUser(message: String) {
-        _errorResponse.postValue(message)
     }
 
     fun validateCredentials(
