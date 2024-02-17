@@ -5,7 +5,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.quantumcode.napets.data.model.PestDisease
+import com.quantumcode.napets.data.model.pestDisease.PestDisease
 import com.quantumcode.napets.databinding.FragmentPestDiseaseFragmentBinding
 import com.quantumcode.napets.ui.base.BaseFragment
 import com.quantumcode.napets.ui.pestDisease.view.adapter.PestDiseaseAdapter

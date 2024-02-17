@@ -45,7 +45,7 @@ class HomeSubjectsAdapter(
                 itemSubjectImage.setColorFilter(ContextCompat.getColor(root.context, R.color.primary_color))
             }
 
-            binding.root.setOnClickListener {
+            binding.homeCropsCard.setOnClickListener {
                 homeSubjectAdapterListener.onSelectedItem(subject)
             }
         }

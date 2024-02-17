@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:clipToPadding="false"
+    android:paddingVertical="16dp">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/item_crops_tips_card"
+        android:layout_width="150dp"
+        android:layout_height="170dp"
+        app:cardElevation="4dp"
+        app:cardCornerRadius="12dp"
+        android:clickable="true"
+        android:focusable="true"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:cardBackgroundColor="@color/color_secondary"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <View android:id="@+id/item_crops_tips_bg_shape"
+                android:layout_width="match_parent"
+                android:layout_height="110dp"
+                android:background="@drawable/bg_shape_crops_tips"/>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/item_crops_tips_image"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_marginTop="10dp"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/ic_my_crops"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/item_crops_tips_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                tools:text="Fertilizante"
+                android:layout_marginTop="8dp"
+                android:textAlignment="center"
+                android:textColor="@color/text_color"
+                android:fontFamily="@font/cera_pro_bold"
+                app:layout_constraintTop_toBottomOf="@id/item_crops_tips_bg_shape"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

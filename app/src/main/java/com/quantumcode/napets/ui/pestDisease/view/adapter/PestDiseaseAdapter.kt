@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.quantumcode.napets.R
-import com.quantumcode.napets.data.model.PestDisease
+import com.quantumcode.napets.data.model.pestDisease.PestDisease
 import com.quantumcode.napets.databinding.ItemPestDiseaseBinding
 
 class PestDiseaseAdapter(
@@ -45,7 +45,7 @@ class PestDiseaseAdapter(
                     .placeholder(R.drawable.ic_user)
                     .into(itemHistoryImage)
 
-                root.setOnClickListener {
+                itemPestDiseaseCard.setOnClickListener {
                     pestDiseaseAdapterListener.onItemClick(pestDisease)
                 }
             }
