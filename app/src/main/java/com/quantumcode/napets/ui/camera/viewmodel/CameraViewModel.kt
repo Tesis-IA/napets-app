@@ -18,9 +18,6 @@ class CameraViewModel @Inject constructor(
     private var _prediction = MutableLiveData<Prediction>()
     val prediction get() = _prediction
 
-    private val _errorResponse = MutableLiveData<String>()
-    val errorResponse get() = _errorResponse
-
     fun makePrediction(
         deviceId: String,
         file: File
@@ -29,18 +26,14 @@ class CameraViewModel @Inject constructor(
             val predictionResult = predictionRepository.makePrediction(
                 deviceId = deviceId,
                 file = file,
-                handleErrorPredict = ::handleErrorPredict
+                handleErrorPredict = ::handleErrorResponse
             )
             if (predictionResult == null) {
-                handleErrorPredict("An occurred an error trying to predict image")
+                handleErrorResponse("An occurred an error trying to predict image")
             } else {
                 val stablePredictionResponse = Prediction(predictionResult)
                 _prediction.postValue(stablePredictionResponse)
             }
         }
-    }
-
-    private fun handleErrorPredict(message: String) {
-        _errorResponse.postValue(message)
     }
 }

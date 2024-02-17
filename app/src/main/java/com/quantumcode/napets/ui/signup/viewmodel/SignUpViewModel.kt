@@ -22,8 +22,6 @@ class SignUpViewModel @Inject constructor(
     private val _isAuthenticated = MutableLiveData(false)
     val isAuthenticated get() = _isAuthenticated
 
-    private val _errorResponse = MutableLiveData<String>()
-    val errorResponse get() = _errorResponse
 
     private fun registerUSer(username: String, email: String, password: String, deviceId: String){
         viewModelScope.launch {
@@ -32,14 +30,10 @@ class SignUpViewModel @Inject constructor(
                 email = email,
                 password = password,
                 deviceId = deviceId,
-                handleErrorSignup = ::handleErrorUser
+                handleErrorSignup = ::handleErrorResponse
             )
             _isAuthenticated.postValue(isSuccess)
         }
-    }
-
-    private fun handleErrorUser(message: String) {
-        _errorResponse.postValue(message)
     }
 
     fun validateCredentials(usernameToValidate: String, emailToValidate: String, passwordToValidate: String, deviceId: String) {
