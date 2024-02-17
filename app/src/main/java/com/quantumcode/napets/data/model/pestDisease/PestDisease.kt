@@ -1,4 +1,4 @@
-package com.quantumcode.napets.data.model
+package com.quantumcode.napets.data.model.pestDisease
 
 import android.os.Parcelable
 import com.quantumcode.napets.data.domainmodel.pestDisease.PestDiseaseResponse

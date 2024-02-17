@@ -2,7 +2,7 @@ package com.quantumcode.napets.ui.pestDisease.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.quantumcode.napets.data.model.PestDisease
+import com.quantumcode.napets.data.model.pestDisease.PestDisease
 import com.quantumcode.napets.data.repository.pestDisease.IPestDiseaseRepository
 import com.quantumcode.napets.ui.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel

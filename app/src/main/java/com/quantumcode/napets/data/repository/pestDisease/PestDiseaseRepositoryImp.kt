@@ -2,7 +2,7 @@ package com.quantumcode.napets.data.repository.pestDisease
 
 import com.haroldadmin.cnradapter.NetworkResponse
 import com.quantumcode.napets.core.service.ApiService
-import com.quantumcode.napets.data.model.PestDisease
+import com.quantumcode.napets.data.model.pestDisease.PestDisease
 import javax.inject.Inject
 
 class PestDiseaseRepositoryImp @Inject constructor(

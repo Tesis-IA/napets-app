@@ -2,6 +2,7 @@ package com.quantumcode.napets.core.service
 
 import com.quantumcode.napets.data.domainmodel.user.UserResponse
 import com.haroldadmin.cnradapter.NetworkResponse
+import com.quantumcode.napets.data.domainmodel.cropsTips.CropsTipsResponse
 import com.quantumcode.napets.data.domainmodel.history.HistoryResponse
 import com.quantumcode.napets.data.domainmodel.pestDisease.PestDiseaseResponse
 import com.quantumcode.napets.data.domainmodel.prediction.PredictionResponse
@@ -48,4 +49,7 @@ interface ApiService {
 
     @GET("pest-disease")
     suspend fun getPestDisease() : NetworkResponse<List<PestDiseaseResponse>, ErrorResponse>
+
+    @GET("crops-tips")
+    suspend fun getCropsTips() : NetworkResponse<List<CropsTipsResponse>, ErrorResponse>
 }

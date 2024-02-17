@@ -1,4 +1,4 @@
-package com.quantumcode.napets.data.domainmodel.product
+package com.quantumcode.napets.data.domainmodel.cropsTips
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
@@ -7,10 +7,10 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 @JsonClass(generateAdapter = true)
-data class ProductResponse(
+data class CropsTipsResponse(
     val id: Int?,
-    val category: String?,
-    val image: String?,
     val name: String?,
-    @SerializedName("where_founded") val whereFounded: String?
-): Parcelable
+    val image: String?,
+    val background: String?,
+    @SerializedName("shape_background") val shapeBackground: String?
+) : Parcelable
