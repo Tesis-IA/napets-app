@@ -6,6 +6,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.quantumcode.napets.data.model.home.Subject
+import com.quantumcode.napets.data.model.home.Weather
 import com.quantumcode.napets.databinding.FragmentHomeBinding
 import com.quantumcode.napets.ui.base.BaseFragment
 import com.quantumcode.napets.ui.home.adapter.HomeSubjectAdapterListener
@@ -34,6 +35,15 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), HomeSubjectAdapterList
         viewModel.subject.observe(viewLifecycleOwner) { response ->
             subjectsAdapter?.submitList(response)
         }
+
+        viewModel.weather.observe(viewLifecycleOwner) { weather ->
+            if (weather == null) return@observe
+            setWeatherUI(weather)
+        }
+    }
+
+    private fun setWeatherUI(weather: Weather) {
+        TODO("Set UI weather")
     }
 
     private fun setupRecyclers() {

@@ -21,7 +21,9 @@
         tools:layout="@layout/fragment_take_picture" >
         <action
             android:id="@+id/action_takePictureFragment_to_diagnosisFragment"
-            app:destination="@id/diagnosisFragment" >
+            app:destination="@id/diagnosisFragment"
+            app:popUpToInclusive="true"
+            app:popUpTo="@id/takePictureFragment">
             <argument
                 android:name="diagnosis"
                 app:argType="com.quantumcode.napets.data.model.prediction.Prediction"/>
