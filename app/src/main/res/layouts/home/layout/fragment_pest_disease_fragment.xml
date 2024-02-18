@@ -21,6 +21,7 @@
             android:id="@+id/history_back_stack"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:titleTextColor="@color/text_color"
             android:visibility="visible"
             android:minHeight="?attr/actionBarSize"
             app:navigationIconTint="@color/black"

@@ -1,4 +1,4 @@
-package com.quantumcode.napets.data.utils
+package com.quantumcode.napets.utils
 
 import androidx.datastore.preferences.core.stringPreferencesKey
 

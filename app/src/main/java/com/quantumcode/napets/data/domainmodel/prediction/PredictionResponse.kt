@@ -13,7 +13,7 @@ data class PredictionResponse (
     val name: String?,
     val description: String?,
     val images: List<String>?,
-    val warnings: List<String>?,
+    val warning: List<String>?,
     @SerializedName("more_info") val moreInfo: List<String>?,
     val category: String?,
     val product: List<ProductResponse>?

@@ -11,8 +11,8 @@ import com.quantumcode.napets.ui.base.BaseFragment
 import com.quantumcode.napets.ui.pestDisease.view.adapter.PestDiseaseAdapter
 import com.quantumcode.napets.ui.pestDisease.view.adapter.PestDiseaseAdapterListener
 import com.quantumcode.napets.ui.pestDisease.viewmodel.PestDiseaseViewModel
-import com.quantumcode.napets.ui.utils.setGone
-import com.quantumcode.napets.ui.utils.setVisible
+import com.quantumcode.napets.utils.setGone
+import com.quantumcode.napets.utils.setVisible
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

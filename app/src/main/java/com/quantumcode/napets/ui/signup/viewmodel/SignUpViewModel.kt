@@ -3,9 +3,9 @@ package com.quantumcode.napets.ui.signup.viewmodel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.quantumcode.napets.data.repository.auth.IAuthenticationRepository
-import com.quantumcode.napets.data.utils.validateEmail
-import com.quantumcode.napets.data.utils.validatePassword
 import com.quantumcode.napets.ui.base.BaseViewModel
+import com.quantumcode.napets.utils.validateEmail
+import com.quantumcode.napets.utils.validatePassword
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject

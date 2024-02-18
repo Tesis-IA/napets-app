@@ -6,12 +6,12 @@ import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
-import com.quantumcode.napets.data.utils.validatePassword
 import com.quantumcode.napets.databinding.FragmentLoginBinding
 import com.quantumcode.napets.ui.base.BaseFragment
 import com.quantumcode.napets.ui.login.viewmodel.LoginViewModel
 import com.quantumcode.napets.ui.main.view.MainActivity
 import com.quantumcode.napets.ui.main.viewmodel.MainViewModel
+import com.quantumcode.napets.utils.validatePassword
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

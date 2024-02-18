@@ -14,7 +14,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.quantumcode.napets.R
 import com.quantumcode.napets.data.model.cropsTips.CropsTips
 import com.quantumcode.napets.databinding.ItemCropsTipsBinding
-import com.quantumcode.napets.ui.utils.parseColor
+import com.quantumcode.napets.utils.parseColor
 
 class CropsTipsAdapter(
     private val cropsTipsAdapterListener: CropsTipsAdapterListener

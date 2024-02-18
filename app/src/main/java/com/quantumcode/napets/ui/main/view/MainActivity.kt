@@ -10,7 +10,7 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
 import com.quantumcode.napets.R
-import com.quantumcode.napets.ui.utils.setupWithNavController
+import com.quantumcode.napets.utils.setupWithNavController
 import com.quantumcode.napets.ui.base.BaseActivity
 import com.quantumcode.napets.databinding.ActivityMainBinding
 import com.quantumcode.napets.ui.main.viewmodel.MainViewModel

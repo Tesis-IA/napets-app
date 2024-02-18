@@ -1,4 +1,4 @@
-package com.quantumcode.napets.ui.utils
+package com.quantumcode.napets.utils
 
 import androidx.camera.core.ImageAnalysis
 import androidx.camera.core.ImageProxy

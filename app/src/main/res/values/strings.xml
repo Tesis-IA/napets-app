@@ -61,8 +61,13 @@
     <string name="entendido">Entendido</string>
 
     <!-- History -->
-    <string name="aun_no_tienes_diagnosticos_para_mostrar">Aun no tienes diagnosticos para mostrar</string>
+    <string name="aun_no_tienes_diagnosticos_para_mostrar">Aun no tienes diagnósticos para mostrar</string>
 
     <!-- Pest Disease -->
     <string name="oh_nos_atrapaste_sin_enfermedades">Oh, nos atrapaste sin enfermedades</string>
+
+    <!-- Diagnosis -->
+    <string name="advertencias">Advertencias</string>
+    <string name="descripcion_general">Descripción general</string>
+    <string name="mas_informacion">Mas información</string>
 </resources>

@@ -28,11 +28,11 @@ import com.quantumcode.napets.databinding.FragmentTakePictureBinding
 import com.quantumcode.napets.ui.base.BaseFragment
 import com.quantumcode.napets.ui.camera.viewmodel.CameraViewModel
 import com.quantumcode.napets.ui.main.viewmodel.MainViewModel
-import com.quantumcode.napets.ui.utils.removeProgress
-import com.quantumcode.napets.ui.utils.setGone
-import com.quantumcode.napets.ui.utils.setInvisible
-import com.quantumcode.napets.ui.utils.setShowProgress
-import com.quantumcode.napets.ui.utils.setVisible
+import com.quantumcode.napets.utils.removeProgress
+import com.quantumcode.napets.utils.setGone
+import com.quantumcode.napets.utils.setInvisible
+import com.quantumcode.napets.utils.setShowProgress
+import com.quantumcode.napets.utils.setVisible
 import dagger.hilt.android.AndroidEntryPoint
 import java.io.File
 import java.util.Calendar
@@ -226,6 +226,7 @@ class TakePictureFragment : BaseFragment<FragmentTakePictureBinding>() {
 
         viewModel.prediction.observe(viewLifecycleOwner) { response ->
             Log.d("Take Picture", response.toString())
+            findNavController().navigate(TakePictureFragmentDirections.actionTakePictureFragmentToDiagnosisFragment(response))
         }
     }
 

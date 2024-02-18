@@ -2,7 +2,7 @@ package com.quantumcode.napets.core.di.module
 
 import com.haroldadmin.cnradapter.NetworkResponseAdapterFactory
 import com.quantumcode.napets.core.service.ApiService
-import com.quantumcode.napets.data.utils.Constant
+import com.quantumcode.napets.utils.Constant
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

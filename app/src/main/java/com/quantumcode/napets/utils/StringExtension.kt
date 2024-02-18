@@ -1,4 +1,4 @@
-package com.quantumcode.napets.ui.utils
+package com.quantumcode.napets.utils
 
 import android.graphics.Color
 import android.util.Log
@@ -13,3 +13,7 @@ fun String.parseColor() = try {
     Log.e("Error to trying parse color", e.message.toString())
     Color.parseColor("#717171")
 }
+
+fun String.validateEmail() = contains("@") && contains(".com")
+
+fun String.validatePassword() = length >= 6

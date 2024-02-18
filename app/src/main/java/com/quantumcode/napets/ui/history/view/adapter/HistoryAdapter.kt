@@ -10,7 +10,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.quantumcode.napets.R
 import com.quantumcode.napets.data.model.history.History
 import com.quantumcode.napets.databinding.ItemHistoryBinding
-import com.quantumcode.napets.ui.utils.getFormattedDate
+import com.quantumcode.napets.utils.getFormattedDate
 
 class HistoryAdapter : RecyclerView.Adapter<HistoryAdapter.HistoryViewHolder>() {
 

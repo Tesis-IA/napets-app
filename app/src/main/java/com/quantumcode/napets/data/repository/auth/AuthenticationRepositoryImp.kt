@@ -7,7 +7,7 @@ import com.quantumcode.napets.data.domainmodel.user.GuestRequest
 import com.quantumcode.napets.data.domainmodel.user.UserLoginRequest
 import com.quantumcode.napets.data.domainmodel.user.UserRequest
 import com.quantumcode.napets.data.model.auth.UserData
-import com.quantumcode.napets.data.utils.PreferencesKeys
+import com.quantumcode.napets.utils.PreferencesKeys
 import javax.inject.Inject
 
 class AuthenticationRepositoryImp @Inject constructor(

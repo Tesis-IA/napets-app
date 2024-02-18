@@ -22,6 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:visibility="visible"
+            app:titleTextColor="@color/text_color"
             android:minHeight="?attr/actionBarSize"
             app:navigationIconTint="@color/black"
             app:titleTextAppearance="@style/Toolbar.TitleText"
