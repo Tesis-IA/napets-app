@@ -8,7 +8,7 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.emptyPreferences
 import androidx.datastore.preferences.preferencesDataStoreFile
 import com.quantumcode.napets.core.di.manager.DataStoreManager
-import com.quantumcode.napets.data.utils.Constant
+import com.quantumcode.napets.utils.Constant
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

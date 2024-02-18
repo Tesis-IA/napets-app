@@ -24,7 +24,7 @@ data class Prediction(
         name = predictionResponse.name.orEmpty(),
         description = predictionResponse.description.orEmpty(),
         images = predictionResponse.images.orEmpty(),
-        warnings = predictionResponse.warnings.orEmpty(),
+        warnings = predictionResponse.warning.orEmpty(),
         moreInfo = predictionResponse.moreInfo.orEmpty(),
         category = predictionResponse.category.orEmpty(),
         product = predictionResponse.product?.map { Product(it) }.orEmpty()

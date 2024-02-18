@@ -7,13 +7,12 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
 import com.quantumcode.napets.R
-import com.quantumcode.napets.data.utils.validateEmail
-import com.quantumcode.napets.data.utils.validatePassword
 import com.quantumcode.napets.databinding.FragmentSignUpBinding
 import com.quantumcode.napets.ui.base.BaseFragment
-import com.quantumcode.napets.ui.main.view.MainActivity
 import com.quantumcode.napets.ui.main.viewmodel.MainViewModel
 import com.quantumcode.napets.ui.signup.viewmodel.SignUpViewModel
+import com.quantumcode.napets.utils.validateEmail
+import com.quantumcode.napets.utils.validatePassword
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

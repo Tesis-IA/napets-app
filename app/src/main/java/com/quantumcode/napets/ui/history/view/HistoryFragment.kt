@@ -11,8 +11,8 @@ import com.quantumcode.napets.ui.base.BaseFragment
 import com.quantumcode.napets.ui.history.view.adapter.HistoryAdapter
 import com.quantumcode.napets.ui.history.viewmodel.HistoryViewModel
 import com.quantumcode.napets.ui.main.viewmodel.MainViewModel
-import com.quantumcode.napets.ui.utils.setGone
-import com.quantumcode.napets.ui.utils.setVisible
+import com.quantumcode.napets.utils.setGone
+import com.quantumcode.napets.utils.setVisible
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ite_diagnosis_dot"
+        android:layout_width="4dp"
+        android:layout_height="4dp"
+        app:srcCompat="@drawable/dot_drawable"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/item_diagnosis_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        tools:text="@string/ayuda_y_comentarios"
+        android:fontFamily="@font/cera_pro_medium"
+        android:textColor="#4A4A4A"
+        android:layout_marginStart="6dp"
+        app:layout_constraintStart_toEndOf="@id/ite_diagnosis_dot"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

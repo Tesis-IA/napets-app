@@ -1,4 +1,4 @@
-package com.quantumcode.napets.data.utils
+package com.quantumcode.napets.utils
 
 import android.view.View
 import androidx.databinding.BindingAdapter
