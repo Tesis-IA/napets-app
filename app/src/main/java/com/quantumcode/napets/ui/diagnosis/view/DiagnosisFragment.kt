@@ -2,6 +2,7 @@ package com.quantumcode.napets.ui.diagnosis.view
 
 import android.os.Bundle
 import android.view.View
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.CompositePageTransformer
@@ -29,6 +30,11 @@ class DiagnosisFragment : BaseFragment<FragmentDiagnosisBinding>() {
         setUI()
     }
 
+    override fun setListeners() {
+        binding.diagnosisBackStack.setNavigationOnClickListener {
+            findNavController().popBackStack()
+        }
+    }
     private fun setUI() {
         binding.apply {
             diagnosisName.text = diagnosisArs.diagnosis.name

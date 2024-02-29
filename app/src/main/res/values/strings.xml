@@ -33,6 +33,13 @@
     <string name="plagas_y_enfermedades">Plagas y \n Enfermedades</string>
     <string name="mis_cultivos">Mis cultivos</string>
     <string name="consejos_de_cultivos">Consejos de \n cultivos</string>
+    <string name="clima">Clima</string>
+    <string name="subir_imagen">Subir imagen</string>
+    <string name="current_formatted_date">Today, %s</string>
+    <string name="celsius_degrees">%s° C</string>
+    <string name="current_location">%s, %s</string>
+    <string name="weather_description">%s %s</string>
+    <string name="weather_humidity">Humedad: %s</string>
 
     <!-- Home Camera Fragment-->
     <string name="captura_una_fotograf_a_de_la_parte_afectada_de_la_planta">Captura una fotografía de la parte afectada de la planta</string>
