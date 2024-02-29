@@ -8,5 +8,6 @@ import kotlinx.parcelize.Parcelize
 @JsonClass(generateAdapter = true)
 data class WeatherConditionResponse(
     val text: String?,
-    val icon: String?
+    val icon: String?,
+    val code: Int?
 ) : Parcelable
